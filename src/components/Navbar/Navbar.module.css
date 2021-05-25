@@ -1,0 +1,16 @@
+.nav {
+    padding: 10px;
+    grid-area: n;
+    background-color: darkgrey;
+}
+
+.item a {
+    color: white;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+}
+
+a.activeLink {
+    color: gold;
+}
