@@ -1,2 +1,26 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
 
+.listReset {
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+}
+
+.dialogsItems {
+    padding: 10px;
+}
+
+.dialogsItems .active {
+    color: gold;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.messages message {}
 
