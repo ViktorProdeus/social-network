@@ -3,19 +3,29 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = () => {
-  return (
-    <div className={s.wrapper}>
-      My posts
-      <div>
-        <textarea></textarea>
-        <button>Add post</button>
-      </div>
-      <div className={s.posts}>
-        <Post message='Hi, how are you?' likeCount={3} />
-        <Post message="It's my first post" likeCount={13} />
-      </div>
-    </div>
-  )
+    const postData = [
+        {id: 1, message: 'Hi, how are you?', likeCount: 3},
+        {id: 2, message: 'How is your it-camasutra?', likeCount: 13},
+    ];
+
+    return (
+        <div className={s.wrapper}>
+            <h3>My posts</h3>
+            <div>
+                <div>
+                    <textarea></textarea>
+                </div>
+
+                <div>
+                    <button>Add post</button>
+                </div>
+            </div>
+            <div className={s.posts}>
+                <Post message={postData[0].message} likeCount={postData[0].likeCount}/>
+                <Post message={postData[1].message} likeCount={postData[1].likeCount}/>
+            </div>
+        </div>
+    )
 
 }
 
