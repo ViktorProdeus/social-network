@@ -1,0 +1,21 @@
+.dialogItem {
+    margin-bottom: 10px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.link img {
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.active {
+    color: gold;
+    text-decoration: underline;
+}
+

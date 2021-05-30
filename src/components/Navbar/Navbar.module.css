@@ -1,7 +1,10 @@
-.nav {
+.wrapper {
     padding: 10px;
-    grid-area: n;
     background-color: darkgrey;
+}
+
+.nav {
+    grid-area: n;
 }
 
 .item a {

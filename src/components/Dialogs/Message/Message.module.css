@@ -1,0 +1,41 @@
+.message {
+    position: relative;
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: darkgrey;
+    border-radius: 15px;
+    word-wrap: break-word;
+}
+
+.user1 {
+    text-align: left;
+    border-bottom-left-radius: 0;
+}
+
+.user1::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle at 0 0, transparent 75%, darkgrey 75%);
+    left: -10px;
+    bottom: 0;
+}
+
+.user2 {
+    margin-left: auto;
+    text-align: right;
+    border-bottom-right-radius: 0;
+}
+
+.user2::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle at 100% 0, transparent 75%, darkgrey 75%);
+    right: -10px;
+    bottom: 0;
+}
