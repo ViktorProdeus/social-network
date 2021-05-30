@@ -29,7 +29,7 @@ const Message = (props: MessageType) => {
 };
 
 const Dialogs = () => {
-    const dialogsData = [
+    const dialogs = [
         {id: 1, name: 'Dimych'},
         {id: 2, name: 'Andrey'},
         {id: 3, name: 'Sveta'},
@@ -38,7 +38,7 @@ const Dialogs = () => {
         {id: 6, name: 'Valera'}
     ];
 
-    const messagesData = [
+    const messages = [
         {id: 1, message: 'Hi!'},
         {id: 2, message: 'How is your it-camasutra?'},
         {id: 3, message: 'Yo'},
@@ -47,24 +47,17 @@ const Dialogs = () => {
         {id: 6, message: 'Yo'}
     ];
 
+    const dialogsElements = dialogs.map(d => <Dialog id={d.id} name={d.name}/>);
+    const messagesElements = messages.map(m => <Message message={m.message}/>);
+
     return (
         <div className={s.dialogs}>
             <ul className={s.dialogsItems + ' ' + s.listReset}>
-                <Dialog id={dialogsData[0].id} name={dialogsData[0].name}/>
-                <Dialog id={dialogsData[1].id} name={dialogsData[1].name}/>
-                <Dialog id={dialogsData[2].id} name={dialogsData[2].name}/>
-                <Dialog id={dialogsData[3].id} name={dialogsData[3].name}/>
-                <Dialog id={dialogsData[4].id} name={dialogsData[4].name}/>
-                <Dialog id={dialogsData[5].id} name={dialogsData[5].name}/>
+                {dialogsElements}
             </ul>
 
             <ul className={s.messages + ' ' + s.listReset}>
-                <Message message={messagesData[0].message}/>
-                <Message message={messagesData[1].message}/>
-                <Message message={messagesData[2].message}/>
-                <Message message={messagesData[3].message}/>
-                <Message message={messagesData[4].message}/>
-                <Message message={messagesData[5].message}/>
+                {messagesElements}
             </ul>
         </div>
     )

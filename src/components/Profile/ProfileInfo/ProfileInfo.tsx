@@ -7,6 +7,7 @@ const ProfileInfo = () => {
       <div className={s.preview}>
         <img src='https://playprint.ru/images/catalog/categories/category-marvel-bg.jpg' alt={'background'}/>
       </div>
+
       <div className={s.wrapper}>
         ava + description
       </div>
