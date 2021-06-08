@@ -16,10 +16,10 @@ const Dialogs = (props: DialogsType) => {
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
     let addMessage = () => {
-        debugger
         let text;
         if(newMessageElement.current) text = newMessageElement.current.value;
         props.addMessage(text);
+        if(newMessageElement.current) newMessageElement.current.value = '';
     }
 
     return (

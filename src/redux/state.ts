@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import {rerenderEntireTree} from "../render";
 
 export type DialogItemType = {
     id: string
@@ -85,6 +86,7 @@ export let addPost = (postMessage: string | undefined) => {
     };
 
     state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state);
 };
 
 export let addMessage = (postMessage: string | undefined) => {
@@ -96,6 +98,7 @@ export let addMessage = (postMessage: string | undefined) => {
     };
 
     state.dialogsPage.messages.push(newMessage);
+    rerenderEntireTree(state);
 };
 
 export default state;
