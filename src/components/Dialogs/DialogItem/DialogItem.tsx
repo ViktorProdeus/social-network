@@ -4,7 +4,7 @@ import s from './DialogItem.module.css';
 import {DialogItemType} from "../../../redux/state";
 
 
-const DialogItem = (props: DialogItemType) => {
+const DialogItem: React.FC<DialogItemType> = (props) => {
 
     const path = `/dialogs/${props.id}`;
 

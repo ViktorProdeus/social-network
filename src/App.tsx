@@ -7,16 +7,11 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Setting/Settings";
-import {AppStateType} from "./redux/state";
+import {AppType} from "./redux/state";
 import Navbar from "./components/Navbar/Navbar";
 
-type AppPropsType = {
-    state: AppStateType
-    addPost: (text: string | undefined) => void
-    addMessage: (text: string | undefined) => void
-}
 
-const App = (props: AppPropsType) => {
+const App: React.FC<AppType> = (props) => {
     return (
         <div className='app-wrapper'>
             <Header/>
@@ -24,14 +19,13 @@ const App = (props: AppPropsType) => {
 
             <div className="app-wrapper-content">
                 <Route path={'/dialogs'} render={() => <Dialogs
-                    dialogs={props.state.dialogsPage.dialogs}
-                    messages={props.state.dialogsPage.messages}
-                    addMessage={props.addMessage}
+                    dialogsPage={props.state.dialogsPage}
+                    addMessageCB={props.addMessageCB}
                 />}
                 />
                 <Route path={'/profile'} render={() => <Profile
                     posts={props.state.profilePage.posts}
-                    addPost={props.addPost}
+                    addPostCB={props.addPostCB}
                 />}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>

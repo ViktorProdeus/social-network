@@ -3,22 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import {addMessage, addPost, AppStateType} from "./redux/state";
+import {addMessageCB, addPostCB, StateType} from "./redux/state";
 
-export type RerenderEntireTreeType = (state: AppStateType)=> void
-
-export let rerenderEntireTree: RerenderEntireTreeType = (state) => {
+export let rerenderEntireTree = ((state: StateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
                 <App
                     state={state}
-                    addPost={addPost}
-                    addMessage={addMessage}
+                    addPostCB={addPostCB}
+                    addMessageCB={addMessageCB}
                 />
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
-};
+});
 

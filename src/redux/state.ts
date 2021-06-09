@@ -1,48 +1,58 @@
 import {v1} from "uuid";
 import {rerenderEntireTree} from "../render";
 
+// state item type
+export type PostType = {
+    id: string
+    message: string
+    likeCount: number
+}
+
 export type DialogItemType = {
     id: string
     name: string
 }
 
 export type MessageType = {
-    id?: string
-    message: string | undefined
-    user: 1 | 2
+    id: string
+    message: string
+    user: number
 }
 
-export type PostType = {
-    id?: string
-    message: string | undefined
-    likeCount: number
-}
-
-export type FriendsItemType = {
+export type FriendType = {
     id: string
     name: string
 }
+// -- end --
 
-export type siteBarType = {
-    friends: Array<FriendsItemType>
+
+// state page type
+export type ProfilePageType = {
+    posts: PostType[]
 }
 
 export type DialogsPageType = {
-    dialogs: Array<DialogItemType>
-    messages: Array<MessageType>
+    dialogs: DialogItemType[]
+    messages: MessageType[]
 }
 
-export type ProfilePageType = {
-    posts: Array<PostType>
+export type SiteBarPageType = {
+    friends: FriendType[]
 }
+// -- end --
 
-export type AppStateType = {
+
+// state type
+export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
-    siteBar: siteBarType
+    siteBar: SiteBarPageType
 }
+// -- end --
 
-let state: AppStateType = {
+
+// state
+let state: StateType = {
     profilePage: {
         posts: [
             {id: v1(), message: 'Hi, how are you?', likeCount: 3},
@@ -75,11 +85,18 @@ let state: AppStateType = {
             {id: v1(), name: 'Sveta'},
         ]
     }
-
 };
+// -- end --
 
-export let addPost = (postMessage: string | undefined) => {
-    let newPost = {
+
+// callback functions types
+export type postMessageCBType = (postMessage: string) => void; // postMessage type
+// -- end --
+
+
+// callback functions
+export let addPostCB: postMessageCBType = (postMessage) => {
+    let newPost: PostType = {
         id: v1(),
         message: postMessage,
         likeCount: 0
@@ -89,8 +106,7 @@ export let addPost = (postMessage: string | undefined) => {
     rerenderEntireTree(state);
 };
 
-export let addMessage = (postMessage: string | undefined) => {
-    debugger
+export const addMessageCB: postMessageCBType = (postMessage) => {
     let newMessage: MessageType = {
         id: v1(),
         message: postMessage,
@@ -100,5 +116,31 @@ export let addMessage = (postMessage: string | undefined) => {
     state.dialogsPage.messages.push(newMessage);
     rerenderEntireTree(state);
 };
+// -- end --
+
+
+// React components type
+export type AppType = {
+    state: StateType
+    addPostCB: (text: string) => void
+    addMessageCB: (text: string) => void
+} // App
+
+export type ProfileType = {
+    posts: PostType[]
+    addPostCB: postMessageCBType
+} // Profile
+
+export type DialogsType = {
+    dialogsPage: DialogsPageType
+    addMessageCB: postMessageCBType
+} // Dialogs
+
+export type MyPostsType = {
+    posts: PostType[]
+    addPostCB: (text: string) => void
+} // MyPosts
+// -- end --
+
 
 export default state;

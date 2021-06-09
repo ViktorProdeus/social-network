@@ -1,9 +1,10 @@
 import React from 'react';
 import s from './SiteBar.module.css';
 import {Friends} from "../Friends/Friends";
-import {siteBarType} from "../../redux/state";
+import {SiteBarPageType} from "../../redux/state";
 
-const SiteBar = (props: siteBarType) => {
+
+const SiteBar: React.FC<SiteBarPageType> = (props ) => {
     return (
         <div className={s.siteBar}>
             <Friends friends={props.friends}/>
