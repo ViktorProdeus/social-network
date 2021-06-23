@@ -6,16 +6,21 @@ import {DialogsType} from "../../redux/state";
 
 const Dialogs: React.FC<DialogsType> = (props) => {
     const dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>);
-    const messagesElements = props.dialogsPage.messages.map(m => <Message key={m.id} id={m.id} user={m.user} message={m.message}/>);
+    const messagesElements = props.dialogsPage.messages.map(m => <Message key={m.id} id={m.id} user={m.user}
+                                                                          message={m.message}/>);
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
     let addMessage = () => {
-        if(newMessageElement.current) {
-            let text = newMessageElement.current?.value;
-            props.addMessageCB(text);
-            newMessageElement.current.value = '';
-        }
+        props.addMessageCB();
+        // props.updateNewMessageText('');
     }
+
+    let onPostChange = () => {
+        if (newMessageElement.current) {
+            let text = newMessageElement.current?.value;
+            props.updateNewMessageText(text);
+        }
+    };
 
     return (
         <>
@@ -31,7 +36,11 @@ const Dialogs: React.FC<DialogsType> = (props) => {
 
             <div className={s.messenger}>
                 <div className={s.textareaWrapper}>
-                    <textarea ref={newMessageElement}></textarea>
+                    <textarea
+                        ref={newMessageElement}
+                        value={props.newMessageText}
+                        onChange={onPostChange}
+                    ></textarea>
                 </div>
 
                 <div className={s.submitWrapper}>
