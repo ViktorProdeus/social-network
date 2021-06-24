@@ -1,5 +1,8 @@
 import {v1} from "uuid";
-import {rerenderEntireTree} from "../render";
+
+let rerenderEntireTree = (state: StateType) => {
+    console.log('state was changed');
+};
 
 // state item type
 export type PostType = {
@@ -99,7 +102,7 @@ export type postMessageCBType = () => void; // postMessage type
 
 
 // callback functions
-export let addPostCB: postMessageCBType = () => {
+export const addPostCB: postMessageCBType = () => {
     let newPost: PostType = {
         id: v1(),
         message: state.profilePage.newPostText,
@@ -111,7 +114,7 @@ export let addPostCB: postMessageCBType = () => {
     rerenderEntireTree(state);
 };
 
-export let updateNewPostText = (newText: string) => {
+export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 };
@@ -128,9 +131,13 @@ export const addMessageCB: postMessageCBType = () => {
     rerenderEntireTree(state);
 };
 
-export let updateNewMessageText = (newMessage: string) => {
+export const updateNewMessageText = (newMessage: string) => {
     state.dialogsPage.newMessageText = newMessage;
     rerenderEntireTree(state);
+};
+
+export const subscribe = (observer: (state: StateType)=> void) => {
+    rerenderEntireTree = observer;
 };
 // -- end --
 
@@ -167,5 +174,6 @@ export type MyPostsType = {
 } // MyPosts
 // -- end --
 
-
+// @ts-ignore
+window.state = state;
 export default state;
