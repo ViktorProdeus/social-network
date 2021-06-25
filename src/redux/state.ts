@@ -50,16 +50,23 @@ export type StateType = {
     siteBar: SiteBarPageType
 }
 
+export type ActionType = {
+    type: 'ADD-POST' | 'UPDATE-NEW-POST-TEXT' | 'ADD-MESSAGE' | 'UPDATE-NEW-MESSAGE'
+    newPostText?: string
+    newMessageText?: string
+}
+
 // store type
 export type StoreType = {
     _state: StateType
     getState: () => StateType
     _callSubscriber: (state: StateType) => void
-    addPostCB: () => void
-    updateNewPostText: (newText: string) => void
-    addMessageCB: () => void
-    updateNewMessageText: (newMessage: string) => void
+    // addPostCB: () => void
+    // updateNewPostText: (newText: string) => void
+    // addMessageCB: () => void
+    // updateNewMessageText: (newMessage: string) => void
     subscribe: (observer: (state: StateType) => void) => void
+    dispatch: (action: ActionType) => void
 }
 // -- end --
 
@@ -109,42 +116,75 @@ let store: StoreType = {
     getState() {
         return this._state;
     },
-
-    addPostCB() {
-        let newPost: PostType = {
-            id: v1(),
-            message: this._state.profilePage.newPostText,
-            likeCount: 0
-        };
-
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-    addMessageCB() {
-        let newMessage: MessageType = {
-            id: v1(),
-            message: this._state.dialogsPage.newMessageText,
-            user: 2
-        };
-
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewMessageText(newMessage: string) {
-        this._state.dialogsPage.newMessageText = newMessage;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer: (state: StateType) => void) {
         this._callSubscriber = observer;
     },
-};
 
+    // addPostCB() {
+    //     let newPost: PostType = {
+    //         id: v1(),
+    //         message: this._state.profilePage.newPostText,
+    //         likeCount: 0
+    //     };
+    //
+    //     this._state.profilePage.posts.push(newPost);
+    //     this._state.profilePage.newPostText = '';
+    //     this._callSubscriber(this._state);
+    // },
+    // updateNewPostText(newText: string) {
+    //     this._state.profilePage.newPostText = newText;
+    //     this._callSubscriber(this._state);
+    // },
+    // addMessageCB() {
+    //     let newMessage: MessageType = {
+    //         id: v1(),
+    //         message: this._state.dialogsPage.newMessageText,
+    //         user: 2
+    //     };
+    //
+    //     this._state.dialogsPage.messages.push(newMessage);
+    //     this._state.dialogsPage.newMessageText = '';
+    //     this._callSubscriber(this._state);
+    // },
+    // updateNewMessageText(newMessage: string) {
+    //     this._state.dialogsPage.newMessageText = newMessage;
+    //     this._callSubscriber(this._state);
+    // },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost: PostType = {
+                id: v1(),
+                message: this._state.profilePage.newPostText,
+                likeCount: 0
+            };
+
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            if (action.newPostText != null) {
+                this._state.profilePage.newPostText = action.newPostText;
+            }
+            this._callSubscriber(this._state);
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage: MessageType = {
+                id: v1(),
+                message: this._state.dialogsPage.newMessageText,
+                user: 2
+            };
+
+            this._state.dialogsPage.messages.push(newMessage);
+            this._state.dialogsPage.newMessageText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
+            if (action.newMessageText != null) {
+                this._state.dialogsPage.newMessageText = action.newMessageText;
+            }
+            this._callSubscriber(this._state);
+        }
+    }
+};
 // -- end --
 
 
@@ -156,31 +196,35 @@ export type postMessageCBType = () => void; // postMessage type
 // React components type
 export type AppType = {
     state: StateType
-    addPostCB: () => void
-    addMessageCB: () => void
-    updateNewPostText: (value: string) => void
-    updateNewMessageText: (value: string) => void
+    // addPostCB: () => void
+    // addMessageCB: () => void
+    // updateNewPostText: (value: string) => void
+    // updateNewMessageText: (value: string) => void
+    dispatch: (action: ActionType) => void
 } // App
 
 export type ProfileType = {
     posts: PostType[]
-    addPostCB: postMessageCBType
-    updateNewPostText: (value: string) => void
+    // addPostCB: postMessageCBType
+    // updateNewPostText: (value: string) => void
     newPostText: string
+    dispatch: (action: ActionType) => void
 } // Profile
 
 export type DialogsType = {
     dialogsPage: DialogsPageType
-    addMessageCB: postMessageCBType
-    updateNewMessageText: (value: string) => void
+    // addMessageCB: postMessageCBType
+    // updateNewMessageText: (value: string) => void
     newMessageText: string
+    dispatch: (action: ActionType) => void
 } // Dialogs
 
 export type MyPostsType = {
     posts: PostType[]
-    addPostCB: () => void
-    updateNewPostText: (value: string) => void
+    // addPostCB: () => void
+    // updateNewPostText: (value: string) => void
     newPostText: string
+    dispatch: (action: ActionType) => void
 } // MyPosts
 // -- end --
 

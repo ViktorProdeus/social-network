@@ -20,16 +20,14 @@ const App: React.FC<AppType> = (props) => {
             <div className="app-wrapper-content">
                 <Route path={'/dialogs'} render={() => <Dialogs
                     dialogsPage={props.state.dialogsPage}
-                    addMessageCB={props.addMessageCB}
-                    updateNewMessageText={props.updateNewMessageText}
                     newMessageText={props.state.dialogsPage.newMessageText}
+                    dispatch={props.dispatch}
                 />}
                 />
                 <Route path={'/profile'} render={() => <Profile
                     posts={props.state.profilePage.posts}
-                    addPostCB={props.addPostCB}
                     newPostText={props.state.profilePage.newPostText}
-                    updateNewPostText={props.updateNewPostText}
+                    dispatch={props.dispatch}
                 />}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>

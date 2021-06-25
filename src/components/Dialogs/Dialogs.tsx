@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import s from "./Dialogs.module.css";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsType} from "../../redux/state";
+import {ActionType, DialogsType} from "../../redux/state";
 
 const Dialogs: React.FC<DialogsType> = (props) => {
     const dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>);
@@ -11,14 +11,15 @@ const Dialogs: React.FC<DialogsType> = (props) => {
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
     let addMessage = () => {
-        props.addMessageCB();
+        props.dispatch({type: 'ADD-MESSAGE'});
         // props.updateNewMessageText('');
     }
 
     let onPostChange = () => {
         if (newMessageElement.current) {
             let text = newMessageElement.current?.value;
-            props.updateNewMessageText(text);
+            let action: ActionType = {type: 'UPDATE-NEW-MESSAGE', newMessageText: text}
+            props.dispatch(action);
         }
     };
 
@@ -40,7 +41,7 @@ const Dialogs: React.FC<DialogsType> = (props) => {
                         ref={newMessageElement}
                         value={props.newMessageText}
                         onChange={onPostChange}
-                    ></textarea>
+                    />
                 </div>
 
                 <div className={s.submitWrapper}>
