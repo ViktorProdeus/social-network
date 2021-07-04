@@ -2,9 +2,9 @@ import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import {SiteBar} from "../SiteBar/SiteBar";
-import {SiteBarPageType} from "../../redux/state";
+import {SiteBarType} from "../../redux/state";
 
-const Navbar: React.FC<SiteBarPageType> = (props) => {
+const Navbar: React.FC<SiteBarType> = (props) => {
     return (
         <div className={s.wrapper}>
             <nav className={s.nav}>
@@ -29,7 +29,7 @@ const Navbar: React.FC<SiteBarPageType> = (props) => {
                 </div>
             </nav>
 
-            <SiteBar friends={props.friends} />
+            <SiteBar friends={props.friends}/>
         </div>
     )
 }

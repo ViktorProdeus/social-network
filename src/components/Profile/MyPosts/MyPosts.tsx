@@ -1,7 +1,8 @@
 import React, {useRef} from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostActionCreator, MyPostsType, updateNewPostTextCreator} from "../../../redux/state";
+import {MyPostsType} from "../../../redux/state";
+import {addPostActionCreator, updateNewPostTextCreator} from "../../../redux/profile-reducer";
 
 const MyPosts: React.FC<MyPostsType> = (props) => {
     const postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message}

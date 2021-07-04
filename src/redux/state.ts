@@ -1,4 +1,7 @@
 import {v1} from "uuid";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 // state item type
 export type PostType = {
@@ -37,7 +40,7 @@ export type DialogsPageType = {
     newMessageText: string
 }
 
-export type SiteBarPageType = {
+export type SiteBarType = {
     friends: FriendType[]
 }
 // -- end --
@@ -47,7 +50,7 @@ export type SiteBarPageType = {
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
-    siteBar: SiteBarPageType
+    siteBar: SiteBarType
 }
 
 export type ActionType = {
@@ -116,47 +119,12 @@ let store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost: PostType = {
-                id: v1(),
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            if (action.newPostText !== undefined) {
-                this._state.profilePage.newPostText = action.newPostText;
-            }
-            this._callSubscriber(this._state);
-        } else if (action.type === 'ADD-MESSAGE') {
-            let newMessage: MessageType = {
-                id: v1(),
-                message: this._state.dialogsPage.newMessageText,
-                user: 2
-            };
-
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-            if (action.newMessageText !== undefined) {
-                this._state.dialogsPage.newMessageText = action.newMessageText;
-            }
-            this._callSubscriber(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.siteBar = sidebarReducer(this._state.siteBar, action);
+        this._callSubscriber(this._state);
     }
 };
-// -- end --
-
-
-// action creators
-export const addPostActionCreator = (): ActionType  => ({type: 'ADD-POST'});
-export const updateNewPostTextCreator = (text: string): ActionType  => ({type: 'UPDATE-NEW-POST-TEXT', newPostText: text});
-export const addMessageActionCreator = (): ActionType  => ({type: 'ADD-MESSAGE'});
-export const updateNewMessageTextCreator = (text: string): ActionType  => ({type: 'UPDATE-NEW-MESSAGE', newMessageText: text});
 // -- end --
 
 
@@ -186,5 +154,3 @@ export type MyPostsType = {
 
 
 export default store;
-// @ts-ignore
-window.store = store;

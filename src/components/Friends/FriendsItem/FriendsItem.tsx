@@ -2,7 +2,7 @@ import React from 'react';
 import s from './FriendsItem.module.css';
 import {FriendType} from "../../../redux/state";
 
-const FriendsItem: React.FC<FriendType> = (props ) => {
+const FriendsItem: React.FC<FriendType> = (props) => {
 
 
     return (

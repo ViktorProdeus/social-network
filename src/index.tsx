@@ -13,7 +13,7 @@ let rerenderEntireTree = (() => {
             <HashRouter>
                 <App
                     store={store}
-               />
+                />
             </HashRouter>
         </React.StrictMode>,
         document.getElementById('root')

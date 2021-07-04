@@ -11,17 +11,18 @@ const DialogItem: React.FC<DialogItemType> = (props) => {
     return (
         <li className={s.dialogItem}>
             <NavLink className={s.link} activeClassName={s.active} to={path}>
-                <img width="30px" height="30px" src="https://cva.ukzn.ac.za/wp-content/uploads/2019/07/profile-placeholder.png"
-                     alt="avatar" />
-                    {props.name}
+                <img width="30px" height="30px"
+                     src="https://cva.ukzn.ac.za/wp-content/uploads/2019/07/profile-placeholder.png"
+                     alt="avatar"/>
+                {props.name}
             </NavLink>
         </li>
-)
+    )
 };
 
 
 export
-    {
-        DialogItem
-    }
-;
+{
+    DialogItem
+}
+    ;

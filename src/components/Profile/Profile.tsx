@@ -12,9 +12,7 @@ const Profile: React.FC<ProfileType> = (props) => {
             <MyPosts
                 posts={props.posts}
                 dispatch={props.dispatch}
-                // addPostCB={props.addPostCB}
                 newPostText={props.newPostText}
-                // updateNewPostText={props.updateNewPostText}
             />
         </div>
     )
