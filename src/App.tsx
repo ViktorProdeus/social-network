@@ -12,22 +12,24 @@ import Navbar from "./components/Navbar/Navbar";
 
 
 const App: React.FC<AppType> = (props) => {
+    const state = props.store.getState();
+
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar friends={props.state.siteBar.friends}/>
+            <Navbar friends={state.siteBar.friends}/>
 
             <div className="app-wrapper-content">
                 <Route path={'/dialogs'} render={() => <Dialogs
-                    dialogsPage={props.state.dialogsPage}
-                    newMessageText={props.state.dialogsPage.newMessageText}
-                    dispatch={props.dispatch}
+                    dialogsPage={state.dialogsPage}
+                    newMessageText={state.dialogsPage.newMessageText}
+                    dispatch={props.store.dispatch.bind(props.store)}
                 />}
                 />
                 <Route path={'/profile'} render={() => <Profile
-                    posts={props.state.profilePage.posts}
-                    newPostText={props.state.profilePage.newPostText}
-                    dispatch={props.dispatch}
+                    posts={state.profilePage.posts}
+                    newPostText={state.profilePage.newPostText}
+                    dispatch={props.store.dispatch.bind(props.store)}
                 />}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>

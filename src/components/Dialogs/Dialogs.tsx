@@ -37,6 +37,7 @@ const Dialogs: React.FC<DialogsType> = (props) => {
             <div className={s.messenger}>
                 <div className={s.textareaWrapper}>
                     <textarea
+                        placeholder={'Enter your message'}
                         ref={newMessageElement}
                         value={props.newMessageText}
                         onChange={onPostChange}

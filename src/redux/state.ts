@@ -67,7 +67,6 @@ export type StoreType = {
 // -- end --
 
 // store
-
 let store: StoreType = {
     _state: {
         profilePage: {
@@ -75,7 +74,7 @@ let store: StoreType = {
                 {id: v1(), message: 'Hi, how are you?', likeCount: 3},
                 {id: v1(), message: 'How is your it-camasutra?', likeCount: 13},
             ],
-            newPostText: 'it.camasutra.com'
+            newPostText: ''
 
         },
         dialogsPage: {
@@ -95,7 +94,7 @@ let store: StoreType = {
                 {id: v1(), message: 'It\'s amazing', user: 2},
                 {id: v1(), message: 'Thanks', user: 1}
             ],
-            newMessageText: 'my friends'
+            newMessageText: ''
         },
         siteBar: {
             friends: [
@@ -152,21 +151,18 @@ let store: StoreType = {
 };
 // -- end --
 
+
+// action creators
 export const addPostActionCreator = (): ActionType  => ({type: 'ADD-POST'});
 export const updateNewPostTextCreator = (text: string): ActionType  => ({type: 'UPDATE-NEW-POST-TEXT', newPostText: text});
 export const addMessageActionCreator = (): ActionType  => ({type: 'ADD-MESSAGE'});
 export const updateNewMessageTextCreator = (text: string): ActionType  => ({type: 'UPDATE-NEW-MESSAGE', newMessageText: text});
-
-
-// callback functions types
-export type postMessageCBType = () => void; // postMessage type
 // -- end --
 
 
 // React components type
 export type AppType = {
-    state: StateType
-    dispatch: (action: ActionType) => void
+    store: StoreType
 } // App
 
 export type ProfileType = {

@@ -1,19 +1,18 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store, {StateType} from './redux/state';
+import store from './redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {HashRouter} from "react-router-dom";
 
-let rerenderEntireTree = ((state: StateType) => {
+let rerenderEntireTree = (() => {
     ReactDOM.render(
         <React.StrictMode>
             <HashRouter>
                 <App
-                    state={state}
-                    dispatch={store.dispatch.bind(store)}
+                    store={store}
                />
             </HashRouter>
         </React.StrictMode>,
@@ -21,7 +20,7 @@ let rerenderEntireTree = ((state: StateType) => {
     );
 });
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree();
 
 store.subscribe(rerenderEntireTree);
 
