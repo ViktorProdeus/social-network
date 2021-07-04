@@ -61,10 +61,6 @@ export type StoreType = {
     _state: StateType
     getState: () => StateType
     _callSubscriber: (state: StateType) => void
-    // addPostCB: () => void
-    // updateNewPostText: (newText: string) => void
-    // addMessageCB: () => void
-    // updateNewMessageText: (newMessage: string) => void
     subscribe: (observer: (state: StateType) => void) => void
     dispatch: (action: ActionType) => void
 }
@@ -120,37 +116,6 @@ let store: StoreType = {
         this._callSubscriber = observer;
     },
 
-    // addPostCB() {
-    //     let newPost: PostType = {
-    //         id: v1(),
-    //         message: this._state.profilePage.newPostText,
-    //         likeCount: 0
-    //     };
-    //
-    //     this._state.profilePage.posts.push(newPost);
-    //     this._state.profilePage.newPostText = '';
-    //     this._callSubscriber(this._state);
-    // },
-    // updateNewPostText(newText: string) {
-    //     this._state.profilePage.newPostText = newText;
-    //     this._callSubscriber(this._state);
-    // },
-    // addMessageCB() {
-    //     let newMessage: MessageType = {
-    //         id: v1(),
-    //         message: this._state.dialogsPage.newMessageText,
-    //         user: 2
-    //     };
-    //
-    //     this._state.dialogsPage.messages.push(newMessage);
-    //     this._state.dialogsPage.newMessageText = '';
-    //     this._callSubscriber(this._state);
-    // },
-    // updateNewMessageText(newMessage: string) {
-    //     this._state.dialogsPage.newMessageText = newMessage;
-    //     this._callSubscriber(this._state);
-    // },
-
     dispatch(action) {
         if (action.type === 'ADD-POST') {
             let newPost: PostType = {
@@ -163,7 +128,7 @@ let store: StoreType = {
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            if (action.newPostText != null) {
+            if (action.newPostText !== undefined) {
                 this._state.profilePage.newPostText = action.newPostText;
             }
             this._callSubscriber(this._state);
@@ -178,7 +143,7 @@ let store: StoreType = {
             this._state.dialogsPage.newMessageText = '';
             this._callSubscriber(this._state);
         } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-            if (action.newMessageText != null) {
+            if (action.newMessageText !== undefined) {
                 this._state.dialogsPage.newMessageText = action.newMessageText;
             }
             this._callSubscriber(this._state);
@@ -186,6 +151,11 @@ let store: StoreType = {
     }
 };
 // -- end --
+
+export const addPostActionCreator = (): ActionType  => ({type: 'ADD-POST'});
+export const updateNewPostTextCreator = (text: string): ActionType  => ({type: 'UPDATE-NEW-POST-TEXT', newPostText: text});
+export const addMessageActionCreator = (): ActionType  => ({type: 'ADD-MESSAGE'});
+export const updateNewMessageTextCreator = (text: string): ActionType  => ({type: 'UPDATE-NEW-MESSAGE', newMessageText: text});
 
 
 // callback functions types
@@ -196,33 +166,23 @@ export type postMessageCBType = () => void; // postMessage type
 // React components type
 export type AppType = {
     state: StateType
-    // addPostCB: () => void
-    // addMessageCB: () => void
-    // updateNewPostText: (value: string) => void
-    // updateNewMessageText: (value: string) => void
     dispatch: (action: ActionType) => void
 } // App
 
 export type ProfileType = {
     posts: PostType[]
-    // addPostCB: postMessageCBType
-    // updateNewPostText: (value: string) => void
     newPostText: string
     dispatch: (action: ActionType) => void
 } // Profile
 
 export type DialogsType = {
     dialogsPage: DialogsPageType
-    // addMessageCB: postMessageCBType
-    // updateNewMessageText: (value: string) => void
     newMessageText: string
     dispatch: (action: ActionType) => void
 } // Dialogs
 
 export type MyPostsType = {
     posts: PostType[]
-    // addPostCB: () => void
-    // updateNewPostText: (value: string) => void
     newPostText: string
     dispatch: (action: ActionType) => void
 } // MyPosts

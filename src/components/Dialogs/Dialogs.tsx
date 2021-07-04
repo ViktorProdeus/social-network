@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import s from "./Dialogs.module.css";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {ActionType, DialogsType} from "../../redux/state";
+import {addMessageActionCreator, DialogsType, updateNewMessageTextCreator} from "../../redux/state";
 
 const Dialogs: React.FC<DialogsType> = (props) => {
     const dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>);
@@ -11,14 +11,13 @@ const Dialogs: React.FC<DialogsType> = (props) => {
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
     let addMessage = () => {
-        props.dispatch({type: 'ADD-MESSAGE'});
-        // props.updateNewMessageText('');
+        props.dispatch(addMessageActionCreator());
     }
 
     let onPostChange = () => {
         if (newMessageElement.current) {
             let text = newMessageElement.current?.value;
-            let action: ActionType = {type: 'UPDATE-NEW-MESSAGE', newMessageText: text}
+            let action = updateNewMessageTextCreator(text)
             props.dispatch(action);
         }
     };
