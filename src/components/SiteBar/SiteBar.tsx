@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './SiteBar.module.css';
 import {Friends} from "../Friends/Friends";
-import {SiteBarType} from "../../redux/state";
+import {SiteBarType} from "../../redux/store";
 
 
 const SiteBar: React.FC<SiteBarType> = (props) => {

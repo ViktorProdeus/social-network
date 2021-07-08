@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import s from "./Dialogs.module.css";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsType} from "../../redux/state";
+import {DialogsType} from "../../redux/store";
 import {addMessageActionCreator, updateNewMessageTextCreator} from "../../redux/dialogs-reducer";
 
 const Dialogs: React.FC<DialogsType> = (props) => {

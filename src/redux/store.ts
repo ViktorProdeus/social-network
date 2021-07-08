@@ -131,6 +131,8 @@ let store: StoreType = {
 // React components type
 export type AppType = {
     store: StoreType
+    dispatch: (action: ActionType) => void
+    state: StateType
 } // App
 
 export type ProfileType = {

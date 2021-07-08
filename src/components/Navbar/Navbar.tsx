@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import {SiteBar} from "../SiteBar/SiteBar";
-import {SiteBarType} from "../../redux/state";
+import {SiteBarType} from "../../redux/store";
 
 const Navbar: React.FC<SiteBarType> = (props) => {
     return (

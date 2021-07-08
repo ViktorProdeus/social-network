@@ -1,9 +1,29 @@
 import {v1} from "uuid";
-import {ActionType, DialogsPageType, MessageType} from "./state";
+import {ActionType, DialogsPageType, MessageType} from "./store";
 const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
 
-const dialogsReducer = (state: DialogsPageType, action: ActionType) => {
+let initialState: DialogsPageType = {
+    dialogs: [
+        {id: v1(), name: 'Dimych'},
+        {id: v1(), name: 'Andrey'},
+        {id: v1(), name: 'Sveta'},
+        {id: v1(), name: 'Sasha'},
+        {id: v1(), name: 'Viktor'},
+        {id: v1(), name: 'Valera'}
+    ],
+    messages: [
+        {id: v1(), message: 'Hi!', user: 1},
+        {id: v1(), message: 'Hi!', user: 2},
+        {id: v1(), message: 'How is your it-camasutra?', user: 2},
+        {id: v1(), message: 'Perfectly', user: 1},
+        {id: v1(), message: 'It\'s amazing', user: 2},
+        {id: v1(), message: 'Thanks', user: 1}
+    ],
+    newMessageText: ''
+};
+
+const dialogsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage: MessageType = {
