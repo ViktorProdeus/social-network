@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import {SiteBar, SiteBarType} from "../SiteBar/SiteBar";
+import SiteBarContainer from "../SiteBar/SiteBarContainer";
 
-const Navbar: React.FC<SiteBarType> = (props) => {
+const Navbar = () => {
     return (
         <div className={s.wrapper}>
             <nav className={s.nav}>
@@ -28,7 +28,7 @@ const Navbar: React.FC<SiteBarType> = (props) => {
                 </div>
             </nav>
 
-            <SiteBar friends={props.friends}/>
+            <SiteBarContainer/>
         </div>
     )
 }
