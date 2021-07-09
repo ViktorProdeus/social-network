@@ -1,23 +1,19 @@
-import React from 'react';
 import {SiteBar} from "./SiteBar";
-import StoreContext from "../../StoreContext";
-
-const SiteBarContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    let state = store.getState();
+import {ActionType, StateType} from "../../redux/redux-store";
+import {connect} from "react-redux";
 
 
-                    return (
-                        <SiteBar friends={state.siteBar.friends}/>
-                    )
-                }
+const mapStateToProps = (state: StateType) => {
+    return {
+        friends: state.siteBar.friends
+    };
+};
 
-            }
-        </StoreContext.Consumer>
-    )
-}
+const mapDispatchToProps = (dispatch: (action: ActionType)=> void) => {
+    return {};
+};
+
+const SiteBarContainer = connect(mapStateToProps, mapDispatchToProps)(SiteBar);
+
 
 export default SiteBarContainer;

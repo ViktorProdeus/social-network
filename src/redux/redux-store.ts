@@ -30,6 +30,6 @@ let reducers = combineReducers({
     siteBar: sidebarReducer,
 });
 
-let store: StoreType = createStore(reducers);
+let store = createStore(reducers);
 
 export default store;
