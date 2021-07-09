@@ -1,7 +1,15 @@
 import {v1} from "uuid";
-import {ActionType, DialogsPageType, MessageType} from "./store";
+import {MessageType} from "../components/Dialogs/Message/Message";
+import {DialogItemType} from "../components/Dialogs/DialogItem/DialogItem";
+import {ActionType} from "./redux-store";
 const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
+
+export type DialogsPageType = {
+    dialogs: DialogItemType[]
+    messages: MessageType[]
+    newMessageText: string
+}
 
 let initialState: DialogsPageType = {
     dialogs: [

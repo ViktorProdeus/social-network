@@ -1,5 +1,6 @@
-import {ActionType, SiteBarType} from "./store";
 import {v1} from "uuid";
+import {SiteBarType} from "../components/SiteBar/SiteBar";
+import {ActionType} from "./redux-store";
 
 let initialState: SiteBarType = {
     friends: [

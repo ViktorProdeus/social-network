@@ -1,7 +1,13 @@
 import {v1} from "uuid";
-import {ActionType, PostType, ProfilePageType} from "./store";
+import {PostType} from "../components/Profile/MyPosts/Post/Post";
+import {ActionType} from "./redux-store";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+
+export type ProfilePageType = {
+    posts: PostType[]
+    newPostText: string
+}
 
 let initialState: ProfilePageType = {
     posts: [

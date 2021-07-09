@@ -2,8 +2,14 @@ import React, {useRef} from "react";
 import s from "./Dialogs.module.css";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsType} from "../../redux/store";
-import {addMessageActionCreator, updateNewMessageTextCreator} from "../../redux/dialogs-reducer";
+import {addMessageActionCreator, DialogsPageType, updateNewMessageTextCreator} from "../../redux/dialogs-reducer";
+import {ActionType} from "../../redux/redux-store";
+
+export type DialogsType = {
+    dialogsPage: DialogsPageType
+    newMessageText: string
+    dispatch: (action: ActionType) => void
+}
 
 const Dialogs: React.FC<DialogsType> = (props) => {
     const dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>);

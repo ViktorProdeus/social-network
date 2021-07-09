@@ -1,8 +1,11 @@
 import React from 'react';
 import s from './SiteBar.module.css';
 import {Friends} from "../Friends/Friends";
-import {SiteBarType} from "../../redux/store";
+import {FriendType} from "../Friends/FriendsItem/FriendsItem";
 
+export type SiteBarType = {
+    friends: FriendType[]
+}
 
 const SiteBar: React.FC<SiteBarType> = (props) => {
     return (

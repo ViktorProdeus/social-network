@@ -7,9 +7,14 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Setting/Settings";
-import {AppType} from "./redux/store";
 import Navbar from "./components/Navbar/Navbar";
+import {ActionType, StateType, StoreType} from "./redux/redux-store";
 
+export type AppType = {
+    store: StoreType
+    dispatch: (action: ActionType) => void
+    state: StateType
+}
 
 const App: React.FC<AppType> = (props) => {
 

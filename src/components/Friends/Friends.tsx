@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Friends.module.css';
 import {FriendsItem} from "./FriendsItem/FriendsItem";
-import {SiteBarType} from "../../redux/store";
+import {SiteBarType} from "../SiteBar/SiteBar";
 
 const Friends: React.FC<SiteBarType> = (props) => {
     const friendsElements = props.friends.map(item => <FriendsItem key={item.id} id={item.id} name={item.name}/>)

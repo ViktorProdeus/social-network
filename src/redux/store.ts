@@ -2,72 +2,7 @@ import {v1} from "uuid";
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
-
-// state item type
-export type PostType = {
-    id: string
-    message: string
-    likeCount: number
-}
-
-export type DialogItemType = {
-    id: string
-    name: string
-}
-
-export type MessageType = {
-    id: string
-    message: string
-    user: number
-}
-
-export type FriendType = {
-    id: string
-    name: string
-}
-// -- end --
-
-
-// state page type
-export type ProfilePageType = {
-    posts: PostType[]
-    newPostText: string
-}
-
-export type DialogsPageType = {
-    dialogs: DialogItemType[]
-    messages: MessageType[]
-    newMessageText: string
-}
-
-export type SiteBarType = {
-    friends: FriendType[]
-}
-// -- end --
-
-
-// state type
-export type StateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogsPageType
-    siteBar: SiteBarType
-}
-
-export type ActionType = {
-    type: 'ADD-POST' | 'UPDATE-NEW-POST-TEXT' | 'ADD-MESSAGE' | 'UPDATE-NEW-MESSAGE'
-    newPostText?: string
-    newMessageText?: string
-}
-
-// store type
-export type StoreType = {
-    _state: StateType
-    getState: () => StateType
-    _callSubscriber: (state: StateType) => void
-    subscribe: (observer: (state: StateType) => void) => void
-    dispatch: (action: ActionType) => void
-}
-// -- end --
+import {StateType, StoreType} from "./redux-store";
 
 // store
 let store: StoreType = {
@@ -125,34 +60,6 @@ let store: StoreType = {
         this._callSubscriber(this._state);
     }
 };
-// -- end --
-
-
-// React components type
-export type AppType = {
-    store: StoreType
-    dispatch: (action: ActionType) => void
-    state: StateType
-} // App
-
-export type ProfileType = {
-    posts: PostType[]
-    newPostText: string
-    dispatch: (action: ActionType) => void
-} // Profile
-
-export type DialogsType = {
-    dialogsPage: DialogsPageType
-    newMessageText: string
-    dispatch: (action: ActionType) => void
-} // Dialogs
-
-export type MyPostsType = {
-    posts: PostType[]
-    newPostText: string
-    dispatch: (action: ActionType) => void
-} // MyPosts
-// -- end --
 
 
 export default store;
