@@ -6,7 +6,7 @@ export type MyPostsType = {
     updateNewPostText: (text: string) => void
     addPost: () => void
     posts: PostType[]
-    newPostText: string
+    newPostText: string | undefined
 }
 
 const MyPosts: React.FC<MyPostsType> = (props) => {

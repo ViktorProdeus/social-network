@@ -6,7 +6,7 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 export type ProfilePageType = {
     posts: PostType[]
-    newPostText: string
+    newPostText: string | undefined
 }
 
 let initialState: ProfilePageType = {
@@ -19,22 +19,27 @@ let initialState: ProfilePageType = {
 };
 const profileReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
-        case ADD_POST:
-            let newPost: PostType = {
+        case ADD_POST: {
+            let newPost = {
                 id: v1(),
                 message: state.newPostText,
                 likeCount: 0
             };
 
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            };
+        }
 
-        case UPDATE_NEW_POST_TEXT:
-            if (action.newPostText !== undefined) {
-                state.newPostText = action.newPostText;
-            }
-            return state;
+        case UPDATE_NEW_POST_TEXT: {
+
+            return {
+                ...state,
+                newPostText: action.newPostText
+            };
+        }
 
         default:
             return state;

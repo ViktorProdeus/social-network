@@ -3,7 +3,7 @@ import s from './Post.module.css';
 
 export type PostType = {
     id: string
-    message: string
+    message: string | undefined
     likeCount: number
 }
 

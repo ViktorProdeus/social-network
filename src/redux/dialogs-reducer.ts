@@ -2,13 +2,14 @@ import {v1} from "uuid";
 import {MessageType} from "../components/Dialogs/Message/Message";
 import {DialogItemType} from "../components/Dialogs/DialogItem/DialogItem";
 import {ActionType} from "./redux-store";
+
 const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
 
 export type DialogsPageType = {
     dialogs: DialogItemType[]
     messages: MessageType[]
-    newMessageText: string
+    newMessageText: string | undefined
 }
 
 let initialState: DialogsPageType = {
@@ -32,23 +33,23 @@ let initialState: DialogsPageType = {
 };
 
 const dialogsReducer = (state = initialState, action: ActionType) => {
+
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMessage: MessageType = {
-                id: v1(),
-                message: state.newMessageText,
-                user: 2
+
+            return {
+                ...state,
+                messages: [...state.messages, {
+                    id: v1(),
+                    message: state.newMessageText,
+                    user: 2
+                }],
+                newMessageText: ''
             };
 
-            state.messages.push(newMessage);
-            state.newMessageText = '';
-            return state;
-
         case UPDATE_NEW_MESSAGE:
-            if (action.newMessageText !== undefined) {
-                state.newMessageText = action.newMessageText;
-            }
-            return state;
+
+            return {...state, newMessageText: action.newMessageText};
 
         default:
             return state;

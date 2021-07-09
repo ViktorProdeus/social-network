@@ -3,7 +3,7 @@ import s from './Message.module.css';
 
 export type MessageType = {
     id: string
-    message: string
+    message: string | undefined
     user: number
 }
 
