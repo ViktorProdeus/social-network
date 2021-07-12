@@ -1,19 +1,20 @@
 import {SiteBar} from "./SiteBar";
-import {ActionType, StateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
+import {StateType} from "../../redux/redux-store";
+import {FriendType} from "../Friends/FriendsItem/FriendsItem";
 
+type MapStateToPropsType = {
+    friends: FriendType[]
+}
 
-const mapStateToProps = (state: StateType) => {
+const mapStateToProps = (state: StateType): MapStateToPropsType => {
     return {
         friends: state.siteBar.friends
     };
 };
 
-const mapDispatchToProps = (dispatch: (action: ActionType)=> void) => {
-    return {};
-};
 
-const SiteBarContainer = connect(mapStateToProps, mapDispatchToProps)(SiteBar);
+const SiteBarContainer = connect(mapStateToProps, {})(SiteBar);
 
 
 export default SiteBarContainer;

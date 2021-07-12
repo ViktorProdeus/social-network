@@ -2,14 +2,14 @@ import React, {useRef} from 'react';
 import s from './MyPosts.module.css';
 import Post, {PostType} from './Post/Post';
 
-export type MyPostsType = {
+type MyPostsPropsType = {
     updateNewPostText: (text: string) => void
     addPost: () => void
     posts: PostType[]
     newPostText: string | undefined
 }
 
-const MyPosts: React.FC<MyPostsType> = (props) => {
+const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     const postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message}
                                                      likeCount={p.likeCount}/>);
     const newPostElement: React.RefObject<HTMLTextAreaElement> = useRef<HTMLTextAreaElement>(null);

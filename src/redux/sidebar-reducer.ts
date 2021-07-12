@@ -1,6 +1,9 @@
 import {v1} from "uuid";
-import {SiteBarType} from "../components/SiteBar/SiteBar";
-import {ActionType} from "./redux-store";
+import {FriendType} from "../components/Friends/FriendsItem/FriendsItem";
+
+export type SiteBarType = {
+    friends: FriendType[]
+}
 
 let initialState: SiteBarType = {
     friends: [
@@ -10,7 +13,7 @@ let initialState: SiteBarType = {
     ]
 };
 
-const sidebarReducer = (state = initialState, action: ActionType) => {
+const sidebarReducer = (state = initialState, action: {}) => {
 
     return state;
 }

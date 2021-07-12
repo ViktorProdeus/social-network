@@ -1,8 +1,13 @@
 import {v1} from "uuid";
 import {PostType} from "../components/Profile/MyPosts/Post/Post";
-import {ActionType} from "./redux-store";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+
+export type ActionProfileType = {
+    type: "ADD-POST" | "UPDATE-NEW-POST-TEXT"
+    newPostText?: string | undefined
+}
 
 export type ProfilePageType = {
     posts: PostType[]
@@ -17,7 +22,7 @@ let initialState: ProfilePageType = {
     newPostText: ''
 
 };
-const profileReducer = (state = initialState, action: ActionType) => {
+const profileReducer = (state = initialState, action: ActionProfileType) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -46,8 +51,8 @@ const profileReducer = (state = initialState, action: ActionType) => {
     }
 };
 
-export const addPostActionCreator = (): ActionType => ({type: 'ADD-POST'});
-export const updateNewPostTextCreator = (text: string): ActionType => ({
+export const addPostActionCreator = (): ActionProfileType => ({type: ADD_POST});
+export const updateNewPostTextCreator = (text: string): ActionProfileType => ({
     type: UPDATE_NEW_POST_TEXT,
     newPostText: text
 });
