@@ -10,7 +10,7 @@
 
 .circle {
     background-color: gold;
-    background-image: url("https://cva.ukzn.ac.za/wp-content/uploads/2019/07/profile-placeholder.png");
+    background-image: url("../../../assets/images/avatar.png");
     background-size: cover;
     width: 40px;
     height: 40px;

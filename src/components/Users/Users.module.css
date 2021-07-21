@@ -35,12 +35,17 @@
     opacity: 0.8;
 }
 
-.avatar {
+.avatarBG {
     width: 100px;
     height: 100px;
+    margin-bottom: 5px;
+}
+
+.avatar {
+    width: 100%;
+    height: auto;
     border-radius: 50%;
     background-size: cover;
-    margin-bottom: 5px;
 }
 
 .user {

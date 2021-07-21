@@ -1,5 +1,3 @@
-import {v1} from "uuid";
-
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -17,8 +15,11 @@ export type LocationType = {
 
 export type UserType = {
     id: string
-    photoUrl: string
-    fullName: string
+    photos: {
+        small: string
+        large: string
+    }
+    name: string
     status: string
     followed: boolean
     location: LocationType
@@ -28,34 +29,9 @@ export type UsersPageType = {
 }
 
 let initialState: UsersPageType = {
-    users: [
-        {
-            id: v1(),
-            photoUrl: 'https://cdna.artstation.com/p/assets/images/images/000/082/308/medium/Capface.jpg?1443930786',
-            followed: false,
-            fullName: 'Dmitry',
-            status: 'I am a boss',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: v1(),
-            photoUrl: 'https://www.vokrug.tv/pic/person/1/0/b/a/10ba699a3bca946690a61476ad7a5a32.jpeg',
-            followed: true,
-            fullName: 'Sasha',
-            status: 'I am a boss too',
-            location: {city: 'Moscow', country: 'Russia'}
-        },
-        {
-            id: v1(),
-            photoUrl: 'https://www.vokrug.tv/pic/person/4/c/3/8/4c385380340d56acd318cf77d7777924.jpeg',
-            followed: false,
-            fullName: 'Andrew',
-            status: 'I am a boss too',
-            location: {city: 'Kiev', country: 'Ukraine'}
-        },
-    ]
-
+    users: []
 };
+
 const usersReducer = (state = initialState, action: ActionUsersType) => {
     switch (action.type) {
         case FOLLOW:
@@ -81,7 +57,7 @@ const usersReducer = (state = initialState, action: ActionUsersType) => {
 
         case SET_USERS:
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: [...action.users]
             }
         default:
             return state;
@@ -90,6 +66,6 @@ const usersReducer = (state = initialState, action: ActionUsersType) => {
 
 export const followAC = (userID: string) => ({type: FOLLOW, userID});
 export const unfollowAC = (userID: string) => ({type: UNFOLLOW, userID});
-export const setUsersAC = (users: UserType) => ({type: SET_USERS, users});
+export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users});
 
 export default usersReducer;
