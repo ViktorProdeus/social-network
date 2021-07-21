@@ -10,51 +10,60 @@ type PropsType = {
     setUsers: (users: UserType[]) => void
     users: UserType[]
 }
-const Users = (props: PropsType) => {
-    if(props.users.length === 0) {
+
+class Users extends React.Component<PropsType, {}> {
+    constructor(props: PropsType) {
+        super(props)
+
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setUsers(response.data.items)
+            this.props.setUsers(response.data.items)
         })
     }
 
-    return (
-        <div className={s.users}>
-            {
-                props.users.map(u => {
-                    return (
-                        <div className={s.user} key={u.id}>
-                            <div className={s.leftContent}>
-                                <div className={s.avatarBG}>
-                                    <img className={s.avatar} src={u.photos.small !== null ? u.photos.small : avatarDefaultPhoto} alt="avatar"/>
+    render() {
+        return (
+            <div className={s.users}>
+                {
+                    this.props.users.map(u => {
+                        return (
+                            <div className={s.user} key={u.id}>
+                                <div className={s.leftContent}>
+                                    <div className={s.avatarBG}>
+                                        <img className={s.avatar}
+                                             src={u.photos.small !== null ? u.photos.small : avatarDefaultPhoto}
+                                             alt="avatar"/>
+                                    </div>
+                                    <div className={s.buttons}>
+                                        {
+                                            u.followed
+                                                ?
+                                                <button className={u.followed ? s.unfollow : s.follow} onClick={() => {
+                                                    this.props.unfollow(u.id)
+                                                }}>Unfollow</button>
+                                                :
+                                                <button className={u.followed ? s.unfollow : s.follow} onClick={() => {
+                                                    this.props.follow(u.id)
+                                                }}>Follow</button>
+                                        }
+                                    </div>
                                 </div>
-                                <div className={s.buttons}>
-                                    {
-                                        u.followed
-                                            ? <button className={u.followed ? s.unfollow : s.follow} onClick={() => {
-                                                props.unfollow(u.id)
-                                            }}>Unfollow</button>
-                                            : <button className={u.followed ? s.unfollow : s.follow} onClick={() => {
-                                                props.follow(u.id)
-                                            }}>Follow</button>
-                                    }
+                                <div className={s.rightContent}>
+                                    <div className={s.innerLeft}>
+                                        <div className={s.name}>{u.name}</div>
+                                        <div className={s.status}>{u.status}</div>
+                                    </div>
+                                    <div className={s.innerRight}>
+                                        <div className={s.country}>{'u.location.country'}</div>
+                                        <div className={s.city}>{'u.location.city'}</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className={s.rightContent}>
-                                <div className={s.innerLeft}>
-                                    <div className={s.name}>{u.name}</div>
-                                    <div className={s.status}>{u.status}</div>
-                                </div>
-                                <div className={s.innerRight}>
-                                    <div className={s.country}>{'u.location.country'}</div>
-                                    <div className={s.city}>{'u.location.city'}</div>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    )
-};
+                        )
+                    })
+                }
+            </div>
+        )
+    }
+}
 
 export default Users;
