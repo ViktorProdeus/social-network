@@ -8,16 +8,16 @@ import App from './App';
 import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 
-    ReactDOM.render(
-        <React.StrictMode>
-            <HashRouter>
-                <Provider store={store}>
-                    <App/>
-                </Provider>
-            </HashRouter>
-        </React.StrictMode>,
-        document.getElementById('root')
-    );
+ReactDOM.render(
+    <React.StrictMode>
+        <HashRouter>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </HashRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
+);
 
 
 // If you want to start measuring performance in your app, pass a function
