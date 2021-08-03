@@ -101,3 +101,12 @@
     text-align: center;
     border-radius: 10px;
 }
+
+.page {
+    color: white;
+}
+
+.current {
+    font-weight: bold;
+    color: gold;
+}
