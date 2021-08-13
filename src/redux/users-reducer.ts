@@ -3,6 +3,7 @@ const UNFOLLOW = "users/UNFOLLOW";
 const SET_USERS = "users/SET_USERS";
 const SET_CURRENT_PAGE = "users/SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "users/SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FETCHING = "users/TOGGLE_IS_FETCHING";
 
 
 type ActionFollowType = {
@@ -30,12 +31,18 @@ type ActionSetTotalUsersCountType = {
     totalUsersCount: number
 }
 
+type ActionToggleIsFetchingType = {
+    type: typeof TOGGLE_IS_FETCHING
+    isFetching: boolean
+}
+
 type ActionsType =
     ActionFollowType
     | ActionUnfollowType
     | ActionSetUsersType
     | ActionSetCurrentPageType
-    | ActionSetTotalUsersCountType;
+    | ActionSetTotalUsersCountType
+    | ActionToggleIsFetchingType;
 
 type LocationType = {
     city: string
@@ -59,13 +66,15 @@ export type UsersPageType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 
 let initialState: UsersPageType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: true
 };
 
 const usersReducer = (state = initialState, action: ActionsType) => {
@@ -99,6 +108,11 @@ const usersReducer = (state = initialState, action: ActionsType) => {
             return {
                 ...state, totalUsersCount: action.totalUsersCount
             }
+
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state, isFetching: action.isFetching
+            }
         default:
             return state;
     }
@@ -108,6 +122,13 @@ export const followAC = (userID: string) => ({type: FOLLOW, userID});
 export const unfollowAC = (userID: string) => ({type: UNFOLLOW, userID});
 export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users});
 export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage});
-export const setTotalUsersCountAC = (totalCount: number) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalCount});
+export const setTotalUsersCountAC = (totalCount: number) => ({
+    type: SET_TOTAL_USERS_COUNT,
+    totalUsersCount: totalCount
+});
+export const setToggleFetchingAC = (isFetching: boolean) => ({
+    type: TOGGLE_IS_FETCHING,
+    isFetching
+});
 
 export default usersReducer;

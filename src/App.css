@@ -16,6 +16,14 @@
     background-color: lightcoral;
 }
 
+.preloader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* rc-pagination plugin */
 
 .rc-pagination {
@@ -53,7 +61,7 @@
     min-width: 28px;
     height: 28px;
     margin-right: 8px;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     font-weight: bold;
     line-height: 28px;
     text-align: center;
@@ -138,7 +146,7 @@
     min-width: 28px;
     height: 28px;
     color: rgba(0, 0, 0, 0.85);
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     line-height: 28px;
     text-align: center;
     vertical-align: middle;
