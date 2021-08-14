@@ -68,8 +68,6 @@
     vertical-align: middle;
     list-style: none;
     background-color: transparent;
-    border: 2px solid #fff;
-    border-radius: 2px;
     outline: 0;
     cursor: pointer;
     user-select: none;
@@ -171,6 +169,7 @@
 }
 
 .rc-pagination-prev .rc-pagination-item-link, .rc-pagination-next .rc-pagination-item-link {
+    padding-bottom: 6px;
     display: flex;
     align-items: center;
     width: 100%;
