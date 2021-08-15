@@ -1,0 +1,15 @@
+.social {
+    padding: 0;
+    list-style: none;
+}
+
+.social svg {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.social li {
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+}

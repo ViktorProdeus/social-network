@@ -1,5 +1,7 @@
 .wrapper {
     padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .preview {
@@ -10,4 +12,29 @@
     width: 100%;
 }
 
+.description {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
+.description h3 {
+    margin: 0;
+}
+
+.work svg {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.work {
+    display: flex;
+    align-items: center;
+}
+
+.photo {
+    object-fit: cover;
+}
+
+.name {
+    color: gold;
+}

@@ -4,6 +4,7 @@ import {UserType} from "../../redux/users-reducer";
 import avatarDefaultPhoto from "../../assets/images/avatar.png";
 import Pagination from 'rc-pagination';
 import localeInfo from '../../locale/en_US';
+import { NavLink } from 'react-router-dom';
 
 type PropsType = {
     follow: (userID: string) => void
@@ -54,9 +55,11 @@ const Users = (props: PropsType) => {
                         <div className={s.user} key={u.id}>
                             <div className={s.leftContent}>
                                 <div className={s.avatarBG}>
-                                    <img className={s.avatar}
-                                         src={u.photos.small !== null ? u.photos.small : avatarDefaultPhoto}
-                                         alt="avatar"/>
+                                    <NavLink to={`./profile/${u.id}`}>
+                                        <img className={s.avatar}
+                                             src={u.photos.small !== null ? u.photos.small : avatarDefaultPhoto}
+                                             alt="avatar"/>
+                                    </NavLink>
                                 </div>
                                 <div className={s.buttons}>
                                     {
