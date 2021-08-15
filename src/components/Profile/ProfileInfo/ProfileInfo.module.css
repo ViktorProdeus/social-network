@@ -13,6 +13,7 @@
 }
 
 .description {
+    width: 50%;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -24,6 +25,7 @@
 .work svg {
     font-size: 30px;
     margin-right: 10px;
+    flex-shrink: 0;
 }
 
 .work {
