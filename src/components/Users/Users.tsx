@@ -15,6 +15,8 @@ type PropsType = {
     totalUsersCount: number
     currentPage: number
     onPageChanged: (pageNumber: number) => void
+    followingInProgress: []
+    toggleFollowingInProgress: (isFetching: boolean, userId: string) => void
 }
 
 const Users = (props: PropsType) => {
@@ -67,22 +69,28 @@ const Users = (props: PropsType) => {
                                         u.followed
                                             ?
                                             <button className={u.followed ? s.unfollow : s.follow}
+                                                    disabled={props.followingInProgress.some(id => id === u.id)}
                                                     onClick={() => {
+                                                        props.toggleFollowingInProgress(true, u.id);
                                                         usersAPI.unfollow(u.id).then(data => {
                                                                 if(data.resultCode === 0) {
                                                                     props.unfollow(u.id);
                                                                 }
+                                                            props.toggleFollowingInProgress(false, u.id);
                                                             });
                                                     }}
                                             >Unfollow</button>
                                             :
                                             <button className={u.followed ? s.unfollow : s.follow}
+                                                    disabled={props.followingInProgress.some(id => id === u.id)}
                                                     onClick={() => {
+                                                        props.toggleFollowingInProgress(true, u.id);
                                                         usersAPI.follow(u.id)
                                                             .then(data => {
                                                                 if(data.resultCode === 0) {
                                                                     props.follow(u.id);
                                                                 }
+                                                                props.toggleFollowingInProgress(false, u.id)
                                                             });
                                                     }}
                                             >Follow</button>
