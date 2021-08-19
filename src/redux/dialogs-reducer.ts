@@ -1,22 +1,20 @@
 import {v1} from "uuid";
-import {MessageType} from "../components/Dialogs/Message/Message";
-import {DialogItemType} from "../components/Dialogs/DialogItem/DialogItem";
 
 const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
 
-export type ActionDialogsType = {
-    type: "ADD-MESSAGE" | "UPDATE-NEW-MESSAGE"
+export type ActionsDialogsType = ActionAddMessageType | ActionUpdateNewMessageType
+
+type ActionAddMessageType = {
+    type: typeof ADD_MESSAGE
+}
+
+type ActionUpdateNewMessageType = {
+    type: typeof UPDATE_NEW_MESSAGE
     newMessageText: string
 }
 
-export type DialogsPageType = {
-    dialogs: DialogItemType[]
-    messages: MessageType[]
-    newMessageText: string | undefined
-}
-
-let initialState: DialogsPageType = {
+let initialState = {
     dialogs: [
         {id: v1(), name: 'Dimych'},
         {id: v1(), name: 'Andrey'},
@@ -36,7 +34,9 @@ let initialState: DialogsPageType = {
     newMessageText: ''
 };
 
-const dialogsReducer = (state = initialState, action: ActionDialogsType) => {
+export type DialogsPageType = typeof initialState
+
+const dialogsReducer = (state : DialogsPageType = initialState, action: ActionsDialogsType): DialogsPageType => {
 
     switch (action.type) {
         case ADD_MESSAGE:
@@ -60,8 +60,8 @@ const dialogsReducer = (state = initialState, action: ActionDialogsType) => {
     }
 };
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageTextCreator = (text: string) => ({
+export const addMessageActionCreator = (): ActionAddMessageType => ({type: ADD_MESSAGE});
+export const updateNewMessageTextCreator = (text: string): ActionUpdateNewMessageType => ({
     type: UPDATE_NEW_MESSAGE,
     newMessageText: text
 });

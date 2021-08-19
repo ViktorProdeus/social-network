@@ -1,11 +1,7 @@
 import {v1} from "uuid";
-import {FriendType} from "../components/Friends/FriendsItem/FriendsItem";
 
-export type SiteBarType = {
-    friends: FriendType[]
-}
 
-let initialState: SiteBarType = {
+let initialState = {
     friends: [
         {id: v1(), name: 'Andrew'},
         {id: v1(), name: 'Sasha'},
@@ -13,7 +9,10 @@ let initialState: SiteBarType = {
     ]
 };
 
-const sidebarReducer = (state = initialState, action: {}) => {
+export type SiteBarType = typeof initialState
+
+
+const sidebarReducer = (state: SiteBarType = initialState, action: {}): SiteBarType => {
 
     return state;
 }

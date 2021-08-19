@@ -1,6 +1,6 @@
 import {v1} from "uuid";
-import profileReducer, {ActionProfileType, ProfilePageType} from "./profile-reducer";
-import dialogsReducer, {ActionDialogsType, DialogsPageType} from "./dialogs-reducer";
+import profileReducer, {ActionsProfileType, ProfilePageType} from "./profile-reducer";
+import dialogsReducer, {ActionsDialogsType, DialogsPageType} from "./dialogs-reducer";
 import sidebarReducer, {SiteBarType} from "./sidebar-reducer";
 
 type StateType = {
@@ -14,7 +14,7 @@ type StoreType = {
     getState: () => StateType
     _callSubscriber: (state: StateType) => void
     subscribe: (observer: (state: StateType) => void) => void
-    dispatch: (action: ActionProfileType & ActionDialogsType) => void
+    dispatch: (action: ActionsProfileType & ActionsDialogsType) => void
 }
 
 

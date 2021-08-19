@@ -1,11 +1,10 @@
 import {v1} from "uuid";
-import {PostType} from "../components/Profile/MyPosts/Post/Post";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 
-export type ActionProfileType = AddPostType | UpdatePostType | SetUsersType
+export type ActionsProfileType = AddPostType | UpdatePostType | SetUsersType
 
 type AddPostType = {
     type: typeof ADD_POST
@@ -47,22 +46,18 @@ export type ProfileType = {
     "photos": PhotosType
 }
 
-export type ProfilePageType = {
-    posts: PostType[]
-    newPostText: string | undefined
-    profile: ProfileType | null
-}
-
-let initialState: ProfilePageType = {
+let initialState = {
     posts: [
         {id: v1(), message: 'Hi, how are you?', likeCount: 3},
         {id: v1(), message: 'How is your it-camasutra?', likeCount: 13},
     ],
     newPostText: '',
     profile: null as ProfileType | null
-
 };
-const profileReducer = (state = initialState, action: ActionProfileType) => {
+
+export type ProfilePageType = typeof initialState
+
+const profileReducer = (state: ProfilePageType = initialState, action: ActionsProfileType): ProfilePageType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -73,7 +68,7 @@ const profileReducer = (state = initialState, action: ActionProfileType) => {
 
             return {
                 ...state,
-                posts: [...state.posts, newPost],
+                posts: [newPost, ...state.posts],
                 newPostText: ''
             };
         }
