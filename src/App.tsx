@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Setting/Settings";
@@ -19,17 +19,15 @@ const App = () => {
             <Navbar />
 
             <div className="app-wrapper-content">
-                <Route path={'/dialogs'} render={() => <DialogsContainer />}
+                <Route path={'/'} exact render={() => <Redirect to={'/profile'}/>}/>
+                <Route path={'/dialogs'} component={DialogsContainer} render={() => <DialogsContainer />}
                 />
-                <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
-                <Route path={'/news'} render={() => <News/>}/>
-                <Route path={'/music'} render={() => <Music/>}/>
-                <Route path={'/settings'} render={() => <Settings/>}/>
+                <Route path={'/profile/:userId?'} component={ProfileContainer} render={() => <ProfileContainer/>}/>
+                <Route path={'/news'} component={News} render={() => <News/>}/>
+                <Route path={'/music'} component={Music} render={() => <Music/>}/>
+                <Route path={'/settings'} component={Settings} render={() => <Settings/>}/>
 
-                <Route path={'/users'} render={() => {
-                    //@ts-ignore
-                  return   <UsersContainer/>
-                }}/>
+                <Route path={'/users'} component={UsersContainer} render={() => <UsersContainer/>}/>
             </div>
         </div>
     );
