@@ -2,15 +2,8 @@ import React, {useRef} from "react";
 import s from "./Dialogs.module.css";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsPageType} from "../../redux/dialogs-reducer";
-
-
-export type DialogsType = {
-    updateNewMessageText: (text: string) => void
-    sendMessage: () => void
-    dialogsPage: DialogsPageType
-
-}
+import {DialogsType} from "./DialogsContainer";
+import {Redirect} from "react-router-dom";
 
 const Dialogs: React.FC<DialogsType> = (props) => {
     const dialogsPage = props.dialogsPage;
@@ -30,6 +23,8 @@ const Dialogs: React.FC<DialogsType> = (props) => {
             props.updateNewMessageText(text)
         }
     };
+
+    if(!props.isAuth) return <Redirect to={"/login"} />
 
     return (
         <>

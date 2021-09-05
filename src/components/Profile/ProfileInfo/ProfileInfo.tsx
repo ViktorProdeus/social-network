@@ -2,12 +2,15 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import PhotoDefault from "../../../assets/images/avatar.png";
 import {MdWork} from "@react-icons/all-files/md/MdWork";
-import {ProfileInfoType} from "../ProfileContainer";
 import Preloader from "../../common/Preloader/Preloader";
 import Social from "./Social/Social";
+import {ProfileType} from "../../../redux/profile-reducer";
 
+type PropsType = {
+    profile: ProfileType | null
+}
 
-const ProfileInfo = (props: ProfileInfoType) => {
+const ProfileInfo = (props: PropsType) => {
     if (!props.profile) {
         return <Preloader/>
     }
