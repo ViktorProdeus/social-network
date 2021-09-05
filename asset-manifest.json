@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/social-network/static/css/main.49c8193c.chunk.css",
-    "main.js": "/social-network/static/js/main.c2eb8c05.chunk.js",
-    "main.js.map": "/social-network/static/js/main.c2eb8c05.chunk.js.map",
-    "runtime-main.js": "/social-network/static/js/runtime-main.8297daf7.js",
-    "runtime-main.js.map": "/social-network/static/js/runtime-main.8297daf7.js.map",
-    "static/js/2.a6d1152f.chunk.js": "/social-network/static/js/2.a6d1152f.chunk.js",
-    "static/js/2.a6d1152f.chunk.js.map": "/social-network/static/js/2.a6d1152f.chunk.js.map",
-    "static/js/3.807b0345.chunk.js": "/social-network/static/js/3.807b0345.chunk.js",
-    "static/js/3.807b0345.chunk.js.map": "/social-network/static/js/3.807b0345.chunk.js.map",
+    "main.css": "/social-network/static/css/main.ba6ba43f.chunk.css",
+    "main.js": "/social-network/static/js/main.14d2825c.chunk.js",
+    "main.js.map": "/social-network/static/js/main.14d2825c.chunk.js.map",
+    "runtime-main.js": "/social-network/static/js/runtime-main.8290ce72.js",
+    "runtime-main.js.map": "/social-network/static/js/runtime-main.8290ce72.js.map",
+    "static/js/2.df54f406.chunk.js": "/social-network/static/js/2.df54f406.chunk.js",
+    "static/js/2.df54f406.chunk.js.map": "/social-network/static/js/2.df54f406.chunk.js.map",
+    "static/js/3.6b742a1a.chunk.js": "/social-network/static/js/3.6b742a1a.chunk.js",
+    "static/js/3.6b742a1a.chunk.js.map": "/social-network/static/js/3.6b742a1a.chunk.js.map",
     "index.html": "/social-network/index.html",
-    "static/css/main.49c8193c.chunk.css.map": "/social-network/static/css/main.49c8193c.chunk.css.map",
-    "static/js/2.a6d1152f.chunk.js.LICENSE.txt": "/social-network/static/js/2.a6d1152f.chunk.js.LICENSE.txt",
-    "static/media/FriendsItem.module.css": "/social-network/static/media/avatar.2479805a.png"
+    "static/css/main.ba6ba43f.chunk.css.map": "/social-network/static/css/main.ba6ba43f.chunk.css.map",
+    "static/js/2.df54f406.chunk.js.LICENSE.txt": "/social-network/static/js/2.df54f406.chunk.js.LICENSE.txt",
+    "static/media/FriendsItem.module.css": "/social-network/static/media/avatar.2479805a.png",
+    "static/media/spinner.244c74af.svg": "/social-network/static/media/spinner.244c74af.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8297daf7.js",
-    "static/js/2.a6d1152f.chunk.js",
-    "static/css/main.49c8193c.chunk.css",
-    "static/js/main.c2eb8c05.chunk.js"
+    "static/js/runtime-main.8290ce72.js",
+    "static/js/2.df54f406.chunk.js",
+    "static/css/main.ba6ba43f.chunk.css",
+    "static/js/main.14d2825c.chunk.js"
   ]
 }
