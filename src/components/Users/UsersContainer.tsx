@@ -8,6 +8,8 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import {compose} from "redux";
+import {withAuthRedirect} from "../hoc/WithAuthRedirect";
 
 type UsersContainerPropsType = MapStateToPropsType & MapDispatchToProps
 
@@ -99,6 +101,12 @@ const mapStateToProps = (state: StateType) => {
 // }
 
 
-export default connect<MapStateToPropsType, MapDispatchToProps, {}, StateType>(
-    mapStateToProps, {follow, unfollow, setCurrentPage, getUsers, toggleFollowingInProgress}
+//  connect<MapStateToPropsType, MapDispatchToProps, {}, StateType>(
+//     mapStateToProps, {follow, unfollow, setCurrentPage, getUsers, toggleFollowingInProgress}
+// )(UsersContainer);
+
+export default compose<React.ComponentType>(
+    withAuthRedirect,
+    connect<MapStateToPropsType, MapDispatchToProps, {}, StateType>(
+        mapStateToProps, {follow, unfollow, setCurrentPage, getUsers, toggleFollowingInProgress})
 )(UsersContainer);
