@@ -1,21 +1,23 @@
 .dialogItem {
     margin-bottom: 10px;
+    padding: 10px;
 }
 
 .link {
     display: flex;
     align-items: center;
-    color: white;
+    color: var(--main-color);
     text-decoration: none;
 }
 
 .link img {
     margin-right: 10px;
     border-radius: 50%;
+    border: 1px solid var(--border-color);
 }
 
 .active {
-    color: gold;
+    color: var(--accent-color);
     text-decoration: underline;
 }
 

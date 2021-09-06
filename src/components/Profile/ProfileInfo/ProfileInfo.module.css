@@ -1,7 +1,29 @@
 .wrapper {
-    padding: 10px;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.person {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.status {
+    padding: 20px;
+    font-size: 18px;
+    background-color: var(--main-bg);
+}
+
+.status b {
+    text-transform: uppercase;
+}
+
+.status input {
+    padding: 5px;
+    height: 20px;
+    font-size: inherit;
+    border: 1px solid var(--border-color);
 }
 
 .preview {
@@ -20,6 +42,8 @@
 
 .description h3 {
     margin: 0;
+    color: var(--main-color);
+    font-size: 25px;
 }
 
 .work svg {
@@ -35,8 +59,10 @@
 
 .photo {
     object-fit: cover;
+    border: 1px solid var(--border-color);
 }
 
 .name {
-    color: gold;
+    color: var(--accent-color);
+    font-size: 21px;
 }

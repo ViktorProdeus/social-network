@@ -2,7 +2,7 @@
   "name": "react-way-of-samurai-ts",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://viktorprodeus.github.io/social-network/",
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.11.4",

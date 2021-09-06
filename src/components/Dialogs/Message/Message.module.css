@@ -3,8 +3,8 @@
     width: 40%;
     padding: 10px;
     margin-bottom: 10px;
-    color: white;
-    background-color: darkgrey;
+    color: var(--main-color);
+    background-color: var(--main-bg);
     border-radius: 15px;
     word-wrap: break-word;
 }
@@ -19,7 +19,7 @@
     content: "";
     width: 10px;
     height: 10px;
-    background: radial-gradient(circle at 0 0, transparent 75%, darkgrey 75%);
+    background: radial-gradient(circle at 0 0, transparent 75%, var(--main-bg) 75%);
     left: -10px;
     bottom: 0;
 }
@@ -35,7 +35,7 @@
     content: "";
     width: 10px;
     height: 10px;
-    background: radial-gradient(circle at 100% 0, transparent 75%, darkgrey 75%);
+    background: radial-gradient(circle at 100% 0, transparent 75%, var(--main-bg) 75%);
     right: -10px;
     bottom: 0;
 }

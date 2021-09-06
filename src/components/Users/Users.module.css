@@ -15,22 +15,23 @@
 
 .buttons button {
     width: 100%;
-    background-color: gold;
+    background-color: var(--accent-color);
     border: none;
     border-radius: 10px;
     padding: 5px 15px;
-    color: white;
+    color: var(--main-bg);
     cursor: pointer;
 }
 
 
 .buttons .unfollow {
-    background-color: darkgrey;
+    background-color: var(--main-bg);
+    color: inherit
 }
 
 .buttons .unfollow:disabled,
 .buttons .follow:disabled {
-    color: rgba(255,255,255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
     cursor: not-allowed;
 }
 
@@ -45,10 +46,12 @@
 }
 
 .avatar {
+    display: block;
     width: 100%;
     height: auto;
     border-radius: 50%;
     background-size: cover;
+    border: 1px solid var(--border-color);
 }
 
 .user {
@@ -67,7 +70,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    border: 2px solid white;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
 }
 
@@ -85,25 +88,25 @@
 .name {
     text-transform: uppercase;
     font-weight: bold;
-    color: white;
+    color: inherit;
 }
 
 .status {
     max-width: 500px;
     font-size: 20px;
     font-style: italic;
-    color: white;
+    color: inherit;
     word-wrap: break-word;
 }
 
 .city {
-    color: white;
+    color: var(--main-color);
 }
 
 .country {
     padding: 3px 5px;
-    background-color: white;
     text-align: center;
+    color: var(--main-color);
     border-radius: 10px;
 }
 

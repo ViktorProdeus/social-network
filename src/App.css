@@ -1,19 +1,30 @@
+:root {
+    --accent-color: skyblue;
+    --main-bg: #edf2f6;
+    --white-bg: #ffffff;
+    --main-color: #515365;
+    --text-color: #959ab5;
+    --header-bg: #757a95;
+    --border-color: #ede9e9
+}
+
 .app-wrapper {
     margin: 0 auto;
     display: grid;
-    max-width: 1200px;
+    max-width: 1320px;
     grid-template-areas:
   "h h"
   "n c";
 
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 3fr 10fr;
+    grid-gap: 25px;
 }
 
 .app-wrapper-content {
     grid-area: c;
-    background-color: lightcoral;
+    background-color: var(--white-bg);
+    color: var(--text-color);
 }
 
 .preloader {
@@ -76,7 +87,7 @@
 .rc-pagination-item a {
     display: block;
     padding: 0 6px;
-    color: white;
+    color: var(--main-color);
     transition: none;
 }
 
@@ -85,30 +96,30 @@
 }
 
 .rc-pagination-item:focus, .rc-pagination-item:hover {
-    border-color: gold;
+    border-color: var(--accent-color);
     transition: all 0.3s;
 }
 
 .rc-pagination-item:focus a, .rc-pagination-item:hover a {
-    color: gold;
+    color: var(--accent-color);
 }
 
 .rc-pagination-item-active {
     font-weight: 500;
     background-color: transparent;
-    border-color: gold;
+    border-color: var(--accent-color);
 }
 
 .rc-pagination-item-active a {
-    color: gold;
+    color: var(--accent-color);
 }
 
 .rc-pagination-item-active:focus, .rc-pagination-item-active:hover {
-    border-color: gold;
+    border-color: var(--accent-color);
 }
 
 .rc-pagination-item-active:focus a, .rc-pagination-item-active:hover a {
-    color: gold;
+    color: var(--accent-color);
 }
 
 .rc-pagination-jump-prev, .rc-pagination-jump-next {
@@ -125,13 +136,13 @@
 .rc-pagination-jump-prev button:after, .rc-pagination-jump-next button:after {
     display: block;
     content: '•••';
-    color: white;
+    color: var(--main-color);
 }
 
 .rc-pagination-jump-prev:hover button:after, .rc-pagination-jump-next:hover button:after {
     display: block;
     content: '•••';
-    color: gold;
+    color: var(--accent-color);
     transition: all 0.3s;
 }
 
@@ -159,7 +170,7 @@
 }
 
 .rc-pagination-prev button, .rc-pagination-next button {
-    color: white;
+    color: var(--main-color);
     cursor: pointer;
     user-select: none;
 }
@@ -184,8 +195,8 @@
 }
 
 .rc-pagination-prev:focus .rc-pagination-item-link, .rc-pagination-prev:hover .rc-pagination-item-link, .rc-pagination-next:focus .rc-pagination-item-link, .rc-pagination-next:hover .rc-pagination-item-link {
-    color: gold;
-    border-color: gold;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
 .rc-pagination-prev button:after {
@@ -203,7 +214,7 @@
 }
 
 .rc-pagination-disabled .rc-pagination-item-link, .rc-pagination-disabled:hover .rc-pagination-item-link, .rc-pagination-disabled:focus .rc-pagination-item-link {
-    color: gold;
+    color: var(--accent-color);
     border-color: transparent;
     cursor: not-allowed;
 }

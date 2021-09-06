@@ -1,6 +1,8 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 3fr 10fr;
+    padding: 30px 0 50px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .listReset {
@@ -12,30 +14,21 @@
 
 .dialogsItems {
     position: relative;
-    padding: 10px;
-}
-
-.dialogsItems::after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 90%;
-    background-color: black;
-    right: 0;
-    top: 5%;
+    padding: 0 20px;
+    border-right: 2px solid var(--border-color);
 }
 
 .dialogsItems .active {
-    color: gold;
+    color: var(--accent-color);
 }
 
 .messages {
-    padding: 10px;
+    padding: 0 20px;
 }
 
 .messenger {
     width: 100%;
-    padding: 10px;
+    padding: 40px 20px;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -48,10 +41,10 @@
 .messenger textarea {
     width: 100%;
     resize: none;
-    border: none;
     border-radius: 15px 0 0 15px;
     display: block;
     padding: 5px 10px 5px 20px;
+    border: 1px solid var(--border-color);
 }
 
 textarea:focus {
@@ -73,12 +66,13 @@ textarea:invalid {
 
 .messenger button {
     width: 100%;
-    min-height: 40px;
+    min-height: 42px;
     display: block;
     border: 0;
-    background-color: darkgrey;
+    background-color: var(--accent-color);
     text-transform: uppercase;
-    color: white;
+    color: var(--main-bg);
+    font-weight: 800;
     border-radius: 0 15px 15px 0;
 }
 

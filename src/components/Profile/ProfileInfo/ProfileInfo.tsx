@@ -5,6 +5,8 @@ import {MdWork} from "@react-icons/all-files/md/MdWork";
 import Preloader from "../../common/Preloader/Preloader";
 import Social from "./Social/Social";
 import {ProfileType} from "../../../redux/profile-reducer";
+import bgImage from "../../../assets/images/profile-image.jpg";
+import ProfileStatus from "./ProfileStatus";
 
 type PropsType = {
     profile: ProfileType | null
@@ -26,31 +28,36 @@ const ProfileInfo = (props: PropsType) => {
     return (
         <div>
             <div className={s.preview}>
-                <img src='https://playprint.ru/images/catalog/categories/category-marvel-bg.jpg' alt={'background'}/>
+                <img src={bgImage} alt={'background'}/>
             </div>
 
             <div className={s.wrapper}>
-                <img className={s.photo} src={props.profile.photos.large || PhotoDefault} width="300" alt="ava"/>
-                <div className={s.description}>
-                    {<h3>About me:</h3>}
-                    <b className={s.name}>{props.profile.fullName}</b>
-                    <p>{!props.profile.aboutMe ? '- No description -' : props.profile.aboutMe}</p>
-                    {isEmptySocial ? null : <h3>Contacts:</h3>}
+                <div className={s.person}>
+                    <img className={s.photo} src={props.profile.photos.large || PhotoDefault} width="300" alt="ava"/>
+                    <div className={s.description}>
+                        {<h3>About me:</h3>}
+                        <b className={s.name}>{props.profile.fullName}</b>
+                        <p>{!props.profile.aboutMe ? '- No description -' : props.profile.aboutMe}</p>
+                        {isEmptySocial ? null : <h3>Contacts:</h3>}
 
-                    <Social
-                        facebook={props.profile.contacts.facebook}
-                        vk={props.profile.contacts.vk}
-                        twitter={props.profile.contacts.twitter}
-                        instagram={props.profile.contacts.instagram}
-                        youtube={props.profile.contacts.youtube}
-                        github={props.profile.contacts.github}
-                    />
+                        <Social
+                            facebook={props.profile.contacts.facebook}
+                            vk={props.profile.contacts.vk}
+                            twitter={props.profile.contacts.twitter}
+                            instagram={props.profile.contacts.instagram}
+                            youtube={props.profile.contacts.youtube}
+                            github={props.profile.contacts.github}
+                        />
 
-                    {props.profile.contacts.mainLink ? <p><b>mainLink - </b> {props.profile.contacts.mainLink}</p> : null}
-                    {props.profile.contacts.website ? <p><b>website - </b> {props.profile.contacts.website}</p> : null}
-                    {props.profile.lookingForAJob ? <p className={s.work}><MdWork/>{props.profile.lookingForAJobDescription}</p> : null}
+                        {props.profile.contacts.mainLink ? <p><b>mainLink - </b> {props.profile.contacts.mainLink}</p> : null}
+                        {props.profile.contacts.website ? <p><b>website - </b> {props.profile.contacts.website}</p> : null}
+                        {props.profile.lookingForAJob ? <p className={s.work}><MdWork/>{props.profile.lookingForAJobDescription}</p> : null}
+                    </div>
                 </div>
+
+                <ProfileStatus status={"I love this live!!!"}/>
             </div>
+
         </div>
     )
 }

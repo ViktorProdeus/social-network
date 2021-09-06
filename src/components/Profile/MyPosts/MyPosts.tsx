@@ -27,9 +27,11 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
     return (
         <div className={s.wrapper}>
-            <h3>My posts</h3>
-            <div>
-                <div>
+            <div className={s.wrapperMessenger}>
+                <h3>My posts</h3>
+
+            <div className={s.wrapperContent}>
+                <div className={s.wrapperTextarea}>
                     <textarea
                         ref={newPostElement}
                         onChange={onPostChange}
@@ -37,9 +39,10 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                     />
                 </div>
 
-                <div>
+                <div className={s.wrapperButton}>
                     <button onClick={onAddPost}>Add post</button>
                 </div>
+            </div>
             </div>
 
             <div className={s.posts}>

@@ -1,5 +1,48 @@
 .wrapper {
-    padding: 10px;
+    padding: 20px 0;
+}
+
+.wrapperMessenger {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.wrapperContent {
+    display: flex;
+    align-items: center;
+}
+
+.wrapperTextarea {
+    width: 70%;
+}
+
+.wrapperTextarea textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 15px 0 0 15px;
+    display: block;
+    padding: 5px 10px 5px 20px;
+    border: 1px solid var(--border-color);
+}
+
+.wrapperMessenger h3 {
+    color: var(--main-color);
+}
+
+.wrapperButton {
+    width: 30%;
+}
+
+.wrapperButton button {
+    width: 100%;
+    min-height: 42px;
+    display: block;
+    border: 0;
+    background-color: var(--accent-color);
+    text-transform: uppercase;
+    color: var(--main-bg);
+    font-weight: 800;
+    border-radius: 0 15px 15px 0;
 }
 
 .posts {

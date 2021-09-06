@@ -1,19 +1,28 @@
 .wrapper {
     padding: 10px;
-    background-color: darkgrey;
+    background-color: var(--white-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
 }
 
 .nav {
     grid-area: n;
 }
 
+.item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
 .item a {
-    color: white;
-    font-size: 16px;
+    color: inherit;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
     letter-spacing: 0.06em;
     text-decoration: none;
 }
 
 a.activeLink {
-    color: gold;
+    color: var(--accent-color);
 }

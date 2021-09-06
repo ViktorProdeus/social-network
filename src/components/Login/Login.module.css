@@ -1,4 +1,5 @@
 .login {
-    color: white;
+    color: var(--main-color);
+    padding: 20px;
 }
 
