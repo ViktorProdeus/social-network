@@ -31,7 +31,17 @@ class ProfileStatus extends Component<PropsType> {
         });
     }
 
+    componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>) {
+        if(prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status,
+            })
+        }
+        console.log('componentDidUpdate')
+    }
+
     render() {
+        console.log('render')
         return (
             <div className={s.status}>
                 {!this.state.editMode &&
@@ -39,7 +49,6 @@ class ProfileStatus extends Component<PropsType> {
                     <b>status: </b><span>{this.props.status || ' -empty-'}</span>
                 </div>
                 }
-
 
                 {this.state.editMode &&
                 <div>
