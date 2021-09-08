@@ -4,13 +4,13 @@ import PhotoDefault from "../../../assets/images/avatar.png";
 import {MdWork} from "@react-icons/all-files/md/MdWork";
 import Preloader from "../../common/Preloader/Preloader";
 import Social from "./Social/Social";
-import {ProfileType} from "../../../redux/profile-reducer";
 import bgImage from "../../../assets/images/profile-image.jpg";
 import ProfileStatus from "./ProfileStatus";
+import {MapPropsType} from "../ProfileContainer";
 
-type PropsType = {
-    profile: ProfileType | null
-}
+type PropsType = MapPropsType & {
+    updateStatus: (status: string) => void
+};
 
 const ProfileInfo = (props: PropsType) => {
     if (!props.profile) {
@@ -55,7 +55,7 @@ const ProfileInfo = (props: PropsType) => {
                     </div>
                 </div>
 
-                <ProfileStatus status={"I love this live!!!"}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
 
         </div>

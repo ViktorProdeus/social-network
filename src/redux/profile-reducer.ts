@@ -5,8 +5,9 @@ import {Dispatch} from "redux";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
+const SET_STATUS = "SET-STATUS";
 
-export type ActionsProfileType = AddPostType | UpdatePostType | SetUsersType
+export type ActionsProfileType = AddPostType | UpdatePostType | SetUsersType |  SetStatusType;
 
 type AddPostType = {
     type: typeof ADD_POST
@@ -20,6 +21,11 @@ type UpdatePostType = {
 type SetUsersType = {
     type: typeof SET_USER_PROFILE
     profile: ProfileType
+}
+
+type SetStatusType = {
+    type: typeof SET_STATUS
+    status: string
 }
 
 type ContactsType = {
@@ -54,7 +60,8 @@ let initialState = {
         {id: v1(), message: 'How is your it-camasutra?', likeCount: 13},
     ],
     newPostText: '',
-    profile: null as ProfileType | null
+    profile: null as ProfileType | null,
+    status: '',
 };
 
 export type ProfilePageType = typeof initialState
@@ -91,6 +98,14 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
             };
         }
 
+        case SET_STATUS: {
+
+            return {
+                ...state,
+                status: action.status
+            };
+        }
+
         default:
             return state;
     }
@@ -98,8 +113,19 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
 
 export const addPostActionCreator = (): AddPostType => ({type: ADD_POST});
 export const setUserProfile = (profile: ProfileType): SetUsersType => ({type: SET_USER_PROFILE, profile});
+export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, status});
 export const getUserProfile = (userID: string) => (dispatch: Dispatch<ActionsProfileType>) => {
     profileAPI.get(userID).then(data => dispatch(setUserProfile(data)))
+}
+export const getStatus = (userID: string) => (dispatch: Dispatch<ActionsProfileType>) => {
+    profileAPI.getStatus(userID).then(data => dispatch(setStatus(data)));
+}
+export const updateStatus = (status: string) => (dispatch: Dispatch<ActionsProfileType>) => {
+    profileAPI.updateStatus(status).then(data => {
+        if(data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
+    });
 }
 export const updateNewPostTextCreator = (text: string): UpdatePostType => ({
     type: UPDATE_NEW_POST_TEXT,

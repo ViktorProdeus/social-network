@@ -27,8 +27,8 @@ let store: StoreType = {
                 {id: v1(), message: 'How is your it-camasutra?', likeCount: 13},
             ],
             newPostText: '',
-            profile: null
-
+            profile: null,
+            status: '',
         },
         dialogsPage: {
             dialogs: [
