@@ -1,11 +1,16 @@
 :root {
     --accent-color: skyblue;
+    --rgba: 135, 206, 235;
+    --alfa: 0.5;
+    --accent-color-rgba: rgba(var(--rgba), var(--alfa));
     --main-bg: #edf2f6;
     --white-bg: #ffffff;
     --main-color: #515365;
     --text-color: #959ab5;
     --header-bg: #757a95;
-    --border-color: #ede9e9
+    --border-color: #ede9e9;
+
+    --default-transition: 0.2s linear;
 }
 
 .app-wrapper {

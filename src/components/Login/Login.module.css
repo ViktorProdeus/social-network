@@ -3,3 +3,66 @@
     padding: 20px;
 }
 
+.formGroup {
+    outline: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.formGroup label {
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--text-color);
+}
+
+.formGroup span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+
+.formGroup input {
+    line-height: 30px;
+    height: 30px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 2px solid var(--border-color);
+    color: var(--main-color);
+}
+
+.formGroup input:focus {
+    border-color: var(--accent-color);
+    outline-color: var(--accent-color);
+}
+
+.formGroup button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 10px;
+    max-width: 150px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    color: var(--main-bg);
+    background-color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-weight: bold;
+    transition: background-color var(--default-transition);
+}
+
+.formGroup button:hover {
+    background-color: var(--accent-color-rgba);
+    cursor: pointer
+}
+
+.formGroup button:focus {
+    background-color: var(--accent-color);
+}
+
+.formGroup_checkbox input {
+    height: auto;
+}
+
