@@ -1,5 +1,5 @@
-import {authAPI} from "../api/api";
-import {Dispatch} from "redux";
+import { authAPI } from "../api/api";
+import { Dispatch } from "redux";
 
 const SET_USER_DATA = "users/SET-USER-DATA";
 

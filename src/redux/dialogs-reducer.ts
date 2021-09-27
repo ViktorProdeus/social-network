@@ -1,17 +1,13 @@
 import {v1} from "uuid";
 
 const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
 
-export type ActionsDialogsType = ActionAddMessageType | ActionUpdateNewMessageType
+export type ActionsDialogsType = ActionAddMessageType;
+
 
 type ActionAddMessageType = {
     type: typeof ADD_MESSAGE
-}
-
-type ActionUpdateNewMessageType = {
-    type: typeof UPDATE_NEW_MESSAGE
-    newMessageText: string
+    newMessageBody: string
 }
 
 let initialState = {
@@ -31,7 +27,6 @@ let initialState = {
         {id: v1(), message: 'It\'s amazing', user: 2},
         {id: v1(), message: 'Thanks', user: 1}
     ],
-    newMessageText: ''
 };
 
 export type DialogsPageType = typeof initialState
@@ -45,25 +40,16 @@ const dialogsReducer = (state : DialogsPageType = initialState, action: ActionsD
                 ...state,
                 messages: [...state.messages, {
                     id: v1(),
-                    message: state.newMessageText,
+                    message: action.newMessageBody,
                     user: 2
                 }],
-                newMessageText: ''
             };
-
-        case UPDATE_NEW_MESSAGE:
-
-            return {...state, newMessageText: action.newMessageText};
 
         default:
             return state;
     }
 };
 
-export const addMessageActionCreator = (): ActionAddMessageType => ({type: ADD_MESSAGE});
-export const updateNewMessageTextCreator = (text: string): ActionUpdateNewMessageType => ({
-    type: UPDATE_NEW_MESSAGE,
-    newMessageText: text
-});
+export const addMessageActionCreator = (newMessageBody: string): ActionAddMessageType => ({type: ADD_MESSAGE, newMessageBody});
 
 export default dialogsReducer;

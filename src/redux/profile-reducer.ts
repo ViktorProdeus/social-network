@@ -11,6 +11,7 @@ export type ActionsProfileType = AddPostType | UpdatePostType | SetUsersType |  
 
 type AddPostType = {
     type: typeof ADD_POST
+    newPostText: string
 }
 
 type UpdatePostType = {
@@ -59,7 +60,7 @@ let initialState = {
         {id: v1(), message: 'Hi, how are you?', likeCount: 3},
         {id: v1(), message: 'How is your it-camasutra?', likeCount: 13},
     ],
-    newPostText: '',
+
     profile: null as ProfileType | null,
     status: '',
 };
@@ -71,22 +72,13 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
         case ADD_POST: {
             let newPost = {
                 id: v1(),
-                message: state.newPostText,
+                message: action.newPostText,
                 likeCount: 0
             };
 
             return {
                 ...state,
                 posts: [newPost, ...state.posts],
-                newPostText: ''
-            };
-        }
-
-        case UPDATE_NEW_POST_TEXT: {
-
-            return {
-                ...state,
-                newPostText: action.newPostText
             };
         }
 
@@ -111,7 +103,7 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
     }
 };
 
-export const addPostActionCreator = (): AddPostType => ({type: ADD_POST});
+export const addPostActionCreator = (newPostText: string): AddPostType => ({type: ADD_POST, newPostText});
 export const setUserProfile = (profile: ProfileType): SetUsersType => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, status});
 export const getUserProfile = (userID: string) => (dispatch: Dispatch<ActionsProfileType>) => {
@@ -127,9 +119,5 @@ export const updateStatus = (status: string) => (dispatch: Dispatch<ActionsProfi
         }
     });
 }
-export const updateNewPostTextCreator = (text: string): UpdatePostType => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newPostText: text
-});
 
 export default profileReducer;

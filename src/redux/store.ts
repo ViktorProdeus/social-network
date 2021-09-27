@@ -26,7 +26,7 @@ let store: StoreType = {
                 {id: v1(), message: 'Hi, how are you?', likeCount: 3},
                 {id: v1(), message: 'How is your it-camasutra?', likeCount: 13},
             ],
-            newPostText: '',
+            // newPostText: '',
             profile: null,
             status: '',
         },
@@ -47,7 +47,7 @@ let store: StoreType = {
                 {id: v1(), message: 'It\'s amazing', user: 2},
                 {id: v1(), message: 'Thanks', user: 1}
             ],
-            newMessageText: ''
+            // newMessageText: ''
         },
         siteBar: {
             friends: [
