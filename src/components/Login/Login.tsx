@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Login.module.css';
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import { Field, InjectedFormProps, reduxForm } from "redux-form";
+import { requiredField } from "../../utils/validators/validator";
+import { Input } from "../common/FormsControls/FormsControls";
 
 type FormDataType = {
     checkbox: boolean
@@ -11,25 +13,24 @@ type FormDataType = {
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div className={s.formGroup}>
-                <label>
-                    <span>Name</span>
-                    <br/>
-                    <Field name={'name'} component={'input'}/>
-                </label>
-            </div>
+            <Field
+                text={'Name'}
+                name={'name'}
+                component={Input}
+                validate={[requiredField]}
+            />
 
-            <div className={s.formGroup}>
-                <label>
-                    <span>Password</span>
-                    <br/>
-                    <Field name={'password'} component={'input'}/>
-                </label>
-            </div>
+            <Field
+                type={'password'}
+                text={'Password'}
+                name={'password'}
+                component={Input}
+                validate={[requiredField]}
+            />
 
             <div className={`${s.formGroup} ${s.formGroup_checkbox}`}>
                 <label>
-                    <Field name={'checkbox'} component={'input'} type='checkbox'/>
+                    <Field name={'checkbox'} component={'input'} type='checkbox' />
                     <span className={s.checkboxText}>remember me</span>
                 </label>
             </div>
@@ -50,7 +51,7 @@ const Login = () => {
     return (
         <div className={s.login}>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} />
         </div>
     )
 }

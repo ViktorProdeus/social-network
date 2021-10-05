@@ -8,29 +8,16 @@
 }
 
 .wrapperContent {
-    display: flex;
-    align-items: center;
+    max-width: 100%;
 }
 
-.wrapperTextarea {
-    width: 70%;
-}
-
-.wrapperTextarea textarea {
-    width: 100%;
-    resize: none;
-    border-radius: 15px 0 0 15px;
-    display: block;
-    padding: 5px 10px 5px 20px;
-    border: 1px solid var(--border-color);
-}
 
 .wrapperMessenger h3 {
     color: var(--main-color);
 }
 
 .wrapperButton {
-    width: 30%;
+    max-width: 300px;
 }
 
 .wrapperButton button {
@@ -42,7 +29,7 @@
     text-transform: uppercase;
     color: var(--main-bg);
     font-weight: 800;
-    border-radius: 0 15px 15px 0;
+    border-radius: 15px;
 }
 
 .posts {

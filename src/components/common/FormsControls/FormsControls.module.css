@@ -1,0 +1,42 @@
+.formControl {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.formControl input {
+    line-height: 30px;
+    height: 30px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 2px solid var(--border-color);
+    color: var(--main-color);
+    outline: none;
+}
+
+.formControl textarea {
+    padding: 10px;
+    resize: none;
+    appearance: none;
+    border: 2px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+.formControl span {
+    min-height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.formControl.error input,
+.formControl.error textarea {
+    border: 2px solid var(--warning-color);
+}
+
+.formControl.error span {
+    color: var(--warning-color);
+}

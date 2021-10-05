@@ -29,19 +29,16 @@
 .messenger {
     width: 100%;
     padding: 40px 20px;
-    display: flex;
-    justify-content: center;
     box-sizing: border-box;
 }
 
-.textareaWrapper {
-    width: 70%;
-}
+/*.textareaWrapper {*/
+/*    width: 70%;*/
+/*}*/
 
 .messenger textarea {
     width: 100%;
     resize: none;
-    border-radius: 15px 0 0 15px;
     display: block;
     padding: 5px 10px 5px 20px;
     border: 1px solid var(--border-color);
@@ -60,8 +57,8 @@ textarea:invalid {
 }
 
 .submitWrapper {
-    margin-left: 30px;
-    width: 30%;
+    max-width: 260px;
+    width: 100%;
 }
 
 .messenger button {
@@ -73,6 +70,6 @@ textarea:invalid {
     text-transform: uppercase;
     color: var(--main-bg);
     font-weight: 800;
-    border-radius: 0 15px 15px 0;
+    border-radius: 15px
 }
 
