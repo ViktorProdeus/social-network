@@ -49,6 +49,7 @@ type mapDispatchToPropsType = {
 let mapStateToProps = (state: StateType) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
+    isAuth: state.auth.isAuth,
 });
 
 export type MapPropsType = ReturnType<typeof mapStateToProps>
