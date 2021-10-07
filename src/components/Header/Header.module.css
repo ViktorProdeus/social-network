@@ -27,3 +27,16 @@
     text-decoration: underline;
 }
 
+.login {
+    display: flex;
+    align-items: center;
+}
+
+.login svg {
+    margin-left: 20px;
+}
+
+.login svg:hover {
+    cursor: pointer
+}
+

@@ -3,6 +3,20 @@
     padding: 20px;
 }
 
+.inner {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--text-color);
+}
+
+.inner form {
+    margin-right: 20%;
+}
+
+.inner span {
+    font-weight: bold;
+}
+
 .formGroup {
     outline: none;
     padding: 0;

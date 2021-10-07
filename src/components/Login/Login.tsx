@@ -3,19 +3,23 @@ import s from './Login.module.css';
 import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import { requiredField } from "../../utils/validators/validator";
 import { Input } from "../common/FormsControls/FormsControls";
+import { connect } from "react-redux";
+import { login } from "../../redux/auth-reducer";
+import { StateType } from "../../redux/redux-store";
+import { Redirect } from "react-router-dom";
 
 type FormDataType = {
-    checkbox: boolean
+    rememberMe: boolean
     password: string
-    name: string
+    email: string
 }
 
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <Field
-                text={'Name'}
-                name={'name'}
+                text={'Email'}
+                name={'email'}
                 component={Input}
                 validate={[requiredField]}
             />
@@ -30,7 +34,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
             <div className={`${s.formGroup} ${s.formGroup_checkbox}`}>
                 <label>
-                    <Field name={'checkbox'} component={'input'} type='checkbox' />
+                    <Field name={'rememberMe'} component={'input'} type='checkbox' />
                     <span className={s.checkboxText}>remember me</span>
                 </label>
             </div>
@@ -42,19 +46,41 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     );
 };
 
-const LoginReduxForm = reduxForm<FormDataType>({form: 'Login'})(LoginForm)
+const LoginReduxForm = reduxForm<FormDataType>({form: 'Login'})(LoginForm);
 
-const Login = () => {
+const Login = (props: mapDispatchToPropsType & mapStateToPropsType) => {
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+
+    if(props.isAuth) {
+        return <Redirect to={'/profile'}/>
     }
     return (
         <div className={s.login}>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <div className={s.inner}>
+                <LoginReduxForm onSubmit={onSubmit} />
+                <div>
+                    <p>To login, enter test e-mails and password:</p>
+                    <p>Email: <span>free@samuraijs.com</span></p>
+                    <p>Password: <span>free</span></p>
+                </div>
+            </div>
+
         </div>
     )
 }
 
+const mapStateToProps = (state: StateType) => ({
+    isAuth: state.auth.isAuth,
+})
 
-export default Login;
+type mapStateToPropsType = ReturnType<typeof mapStateToProps>
+
+type mapDispatchToPropsType = {
+    login: (email: string, password: string, rememberMe: boolean) => void
+}
+
+
+export default connect(mapStateToProps, {login}) (Login);

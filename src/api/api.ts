@@ -29,8 +29,18 @@ export const usersAPI = {
 
 export const authAPI = {
     get() {
-        return instance.get('auth/me').then(response => response.data);
-    }
+        return instance.get<GetResponse>('auth/me').then(response => response.data);
+    },
+
+    login(email: string, password: string, rememberMe: boolean = false) {
+        return instance.post('auth/login', {email, password, rememberMe,})
+            .then(response => response.data);
+    },
+
+    logout() {
+        return instance.delete('auth/login')
+            .then(response => response.data);
+    },
 }
 
 export const profileAPI = {
@@ -45,5 +55,16 @@ export const profileAPI = {
     updateStatus(status: string) {
         return instance.put('profile/status', {status}).then(response => response.data);
     },
+}
+
+type GetResponse = {
+    data: {
+        email: string
+        id: string
+        login: string
+    }
+    fieldsErrors: string[]
+    messages: string[]
+    resultCode: number
 }
 

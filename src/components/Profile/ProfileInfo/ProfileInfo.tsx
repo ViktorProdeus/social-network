@@ -1,12 +1,13 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
 import PhotoDefault from "../../../assets/images/avatar.png";
-import {MdWork} from "@react-icons/all-files/md/MdWork";
+import { MdWork } from "@react-icons/all-files/md/MdWork";
 import Preloader from "../../common/Preloader/Preloader";
 import Social from "./Social/Social";
 import bgImage from "../../../assets/images/profile-image.jpg";
 import ProfileStatus from "./ProfileStatus";
-import {MapPropsType} from "../ProfileContainer";
+import { MapPropsType } from "../ProfileContainer";
+
 
 type PropsType = MapPropsType & {
     updateStatus: (status: string) => void
@@ -23,7 +24,7 @@ const ProfileInfo = (props: PropsType) => {
         && !props.profile.contacts.github
         && !props.profile.contacts.twitter
         && !props.profile.contacts.instagram
-        && !props.profile.contacts.website)
+        && !props.profile.contacts.website);
 
     return (
         <div>
