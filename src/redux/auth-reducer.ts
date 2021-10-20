@@ -47,7 +47,7 @@ export const setAuthUserData = (id: string | null, email: string | null, login: 
 type ActionSetUserDataType = ReturnType<typeof setAuthUserData>
 
 export const getAuthUserData = () => (dispatch: Dispatch<ActionType>) => {
-    authAPI.get().then(response => {
+    return authAPI.get().then(response => {
         if (response.resultCode === 0) {
             let {id, login, email} = response.data;
             dispatch(setAuthUserData(id, email, login, true));

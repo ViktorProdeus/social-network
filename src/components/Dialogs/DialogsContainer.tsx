@@ -8,7 +8,6 @@ import React from "react";
 
 type MapStateToPropsType = {
     dialogsPage: DialogsPageType
-    isAuth: boolean
 }
 
 type mapDispatchToPropsType = {
@@ -21,15 +20,11 @@ export type DialogsType = MapStateToPropsType & mapDispatchToPropsType;
 const mapStateToProps = (state: StateType): MapStateToPropsType => {
     return {
         dialogsPage: state.dialogsPage,
-        isAuth: state.auth.isAuth,
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
-        // updateNewMessageText : (text: string) => {
-        //     dispatch(updateNewMessageTextCreator(text));
-        // },
         sendMessage : (newMessageBody) => {
             dispatch(addMessageActionCreator(newMessageBody))
         },
