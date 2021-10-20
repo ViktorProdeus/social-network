@@ -39,6 +39,10 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 </label>
             </div>
 
+            <div className={s.formSummaryError}>
+                {props.error}
+            </div>
+
             <div className={s.formGroup}>
                 <button type="submit">submit</button>
             </div>

@@ -51,8 +51,6 @@
 }
 
 .formGroup button {
-    display: inline-block;
-    vertical-align: middle;
     margin-top: 10px;
     max-width: 150px;
     width: 100%;
@@ -82,5 +80,11 @@
 
 .formGroup .errorInput {
     border: 2px solid var(--warning-color);
+}
+
+.formSummaryError {
+    min-height: 36px;
+    color: var(--warning-color);
+    padding: 5px;
 }
 
