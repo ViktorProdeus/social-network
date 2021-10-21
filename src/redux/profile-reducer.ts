@@ -6,8 +6,13 @@ const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_STATUS = "SET-STATUS";
+const DELETE_POST = 'DELETE_POST';
 
-export type ActionsProfileType = AddPostType | UpdatePostType | SetUsersType |  SetStatusType;
+export type ActionsProfileType = AddPostType
+    | UpdatePostType
+    | SetUsersType
+    | DeletePostType
+    | SetStatusType;
 
 type AddPostType = {
     type: typeof ADD_POST
@@ -27,6 +32,11 @@ type SetUsersType = {
 type SetStatusType = {
     type: typeof SET_STATUS
     status: string
+}
+
+type DeletePostType = {
+    type: typeof DELETE_POST
+    postId: string
 }
 
 type ContactsType = {
@@ -90,6 +100,9 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
             };
         }
 
+        case DELETE_POST:
+            return {...state, posts: state.posts.filter(p => p.id !== action.postId)}
+
         case SET_STATUS: {
 
             return {
@@ -106,6 +119,8 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
 export const addPostActionCreator = (newPostText: string): AddPostType => ({type: ADD_POST, newPostText});
 export const setUserProfile = (profile: ProfileType): SetUsersType => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, status});
+export const deletePost = (postId: string) => ({type: DELETE_POST, postId} as const)
+
 export const getUserProfile = (userID: string) => (dispatch: Dispatch<ActionsProfileType>) => {
     profileAPI.get(userID).then(data => dispatch(setUserProfile(data)))
 }
