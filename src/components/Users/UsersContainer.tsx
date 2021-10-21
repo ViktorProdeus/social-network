@@ -37,6 +37,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
     }
 
     render() {
+        console.log('USERS')
         return <>
             {this.props.isFetching ? <Preloader/> :
                 <Users
@@ -73,6 +74,7 @@ type MapDispatchToProps = {
 }
 
 const mapStateToProps = (state: StateType) => {
+    console.log('mapStateToProps USERS')
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),

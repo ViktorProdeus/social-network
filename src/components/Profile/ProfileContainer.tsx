@@ -31,6 +31,7 @@ class ProfileContainer extends React.Component<PropsType> {
     }
 
     render() {
+        // console.log("RENDER PROFILE");
         return (
             <Profile
                 {...this.props}
@@ -49,12 +50,15 @@ type mapDispatchToPropsType = {
     updateStatus: (status: string) => void
 }
 
-let mapStateToProps = (state: StateType) => ({
+let mapStateToProps = (state: StateType) => {
+    // console.log('mapStateToProps PROFILE');
+    return ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.id,
     isAuth: state.auth.isAuth,
-});
+})
+};
 
 export type MapPropsType = ReturnType<typeof mapStateToProps>
 

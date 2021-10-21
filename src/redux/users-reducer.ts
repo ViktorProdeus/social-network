@@ -54,7 +54,8 @@ type ActionsUsersType =
     | ActionSetCurrentPageType
     | ActionSetTotalUsersCountType
     | ActionToggleIsFetchingType
-    | ActionToggleIsFollowingProgressType;
+    | ActionToggleIsFollowingProgressType
+    | {type: 'FAKE'};
 
 type LocationType = {
     city: string
@@ -79,13 +80,15 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: [] as string[]
+    followingInProgress: [] as string[],
+    fake: 10
 }
 
 export type UsersPageType = typeof initialState
 
 const usersReducer = (state: UsersPageType = initialState, action: ActionsUsersType): UsersPageType => {
     switch (action.type) {
+        case "FAKE": return {...state, fake: state.fake + 1}
         case FOLLOW:
             return {
                 ...state,
