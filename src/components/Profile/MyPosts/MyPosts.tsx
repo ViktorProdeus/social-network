@@ -10,8 +10,9 @@ type MyPostsPropsType = {
 
 const MyPosts: React.FC<MyPostsPropsType> = React.memo((props) => {
     console.log('RENDER YO')
-    const postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message}
-                                                     likeCount={p.likeCount} />)
+    const postsElements = [...props.posts]
+        .reverse()
+        .map(p => <Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount} />)
 
 
     let addPostText = (values: { newPostText: string }) => {
