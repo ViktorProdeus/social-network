@@ -5,8 +5,8 @@ import { MdWork } from "@react-icons/all-files/md/MdWork";
 import Preloader from "../../common/Preloader/Preloader";
 import Social from "./Social/Social";
 import bgImage from "../../../assets/images/profile-image.jpg";
-import ProfileStatus from "./ProfileStatus";
 import { MapPropsType } from "../ProfileContainer";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 type PropsType = MapPropsType & {
@@ -56,7 +56,8 @@ const ProfileInfo = (props: PropsType) => {
                     </div>
                 </div>
 
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                {/*<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>*/}
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </div>
 
         </div>
