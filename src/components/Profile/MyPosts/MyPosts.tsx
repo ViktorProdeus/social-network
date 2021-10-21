@@ -8,7 +8,8 @@ type MyPostsPropsType = {
     posts: PostType[]
 }
 
-const MyPosts: React.FC<MyPostsPropsType> = (props) => {
+const MyPosts: React.FC<MyPostsPropsType> = React.memo((props) => {
+    console.log('RENDER YO')
     const postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message}
                                                      likeCount={p.likeCount} />)
 
@@ -30,6 +31,6 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
             </div>
         </div>
     )
-};
+});
 
 export default MyPosts;
