@@ -23,7 +23,7 @@ class App extends React.Component<MapStateToPropsType & mapDispatchToPropsType> 
     }
 
     render() {
-        if(!this.props.initialized) {
+        if (!this.props.initialized) {
             return <Preloader />
         }
 
@@ -35,15 +35,14 @@ class App extends React.Component<MapStateToPropsType & mapDispatchToPropsType> 
 
                 <div className="app-wrapper-content">
                     <Route path={'/'} exact render={() => <Redirect to={'/profile'} />} />
-                    <Route path={'/dialogs'} component={DialogsContainer} render={() => <DialogsContainer />}
+                    <Route path={'/dialogs'} render={() => <DialogsContainer />}
                     />
-                    <Route path={'/profile/:userId?'} component={ProfileContainer}
-                           render={() => <ProfileContainer />} />
-                    <Route path={'/news'} component={News} render={() => <News />} />
-                    <Route path={'/music'} component={Music} render={() => <Music />} />
-                    <Route path={'/settings'} component={Settings} render={() => <Settings />} />
-                    <Route path={'/users'} component={UsersContainer} render={() => <UsersContainer />} />
-                    <Route path={'/login'} component={Login} render={() => <Login />} />
+                    <Route path={'/profile/:userId?'} render={() => <ProfileContainer />} />
+                    <Route path={'/news'} render={() => <News />} />
+                    <Route path={'/music'} render={() => <Music />} />
+                    <Route path={'/settings'} render={() => <Settings />} />
+                    <Route path={'/users'} render={() => <UsersContainer />} />
+                    <Route path={'/login'} render={() => <Login />} />
                 </div>
             </div>
         );
