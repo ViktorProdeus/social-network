@@ -17,6 +17,7 @@ const MyPosts: React.FC<MyPostsPropsType> = React.memo((props) => {
 
     let addPostText = (values: { newPostText: string }) => {
         props.addPost(values.newPostText);
+        values.newPostText = '';
     }
 
     return (

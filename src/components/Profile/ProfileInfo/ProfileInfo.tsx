@@ -14,17 +14,25 @@ type PropsType = MapPropsType & {
 };
 
 const ProfileInfo = (props: PropsType) => {
-    if (!props.profile) {
+    const {
+        profile,
+        status,
+        updateStatus,
+    } = props;
+
+    if (!profile) {
         return <Preloader/>
     }
 
-    let isEmptySocial = (!props.profile.contacts.facebook
-        && !props.profile.contacts.vk
-        && !props.profile.contacts.mainLink
-        && !props.profile.contacts.github
-        && !props.profile.contacts.twitter
-        && !props.profile.contacts.instagram
-        && !props.profile.contacts.website);
+    const {contacts, photos, fullName, aboutMe, lookingForAJob, lookingForAJobDescription} = profile
+
+    let isEmptySocial = (!contacts.facebook
+        && !contacts.vk
+        && !contacts.mainLink
+        && !contacts.github
+        && !contacts.twitter
+        && !contacts.instagram
+        && !contacts.website);
 
     return (
         <div>
@@ -34,30 +42,29 @@ const ProfileInfo = (props: PropsType) => {
 
             <div className={s.wrapper}>
                 <div className={s.person}>
-                    <img className={s.photo} src={props.profile.photos.large || PhotoDefault} width="300" alt="ava"/>
+                    <img className={s.photo} src={photos.large || PhotoDefault} width="300" alt="ava"/>
                     <div className={s.description}>
                         {<h3>About me:</h3>}
-                        <b className={s.name}>{props.profile.fullName}</b>
-                        <p>{!props.profile.aboutMe ? '- No description -' : props.profile.aboutMe}</p>
+                        <b className={s.name}>{fullName}</b>
+                        <p>{!aboutMe ? '- No description -' : aboutMe}</p>
                         {isEmptySocial ? null : <h3>Contacts:</h3>}
 
                         <Social
-                            facebook={props.profile.contacts.facebook}
-                            vk={props.profile.contacts.vk}
-                            twitter={props.profile.contacts.twitter}
-                            instagram={props.profile.contacts.instagram}
-                            youtube={props.profile.contacts.youtube}
-                            github={props.profile.contacts.github}
+                            facebook={contacts.facebook}
+                            vk={contacts.vk}
+                            twitter={contacts.twitter}
+                            instagram={contacts.instagram}
+                            youtube={contacts.youtube}
+                            github={contacts.github}
                         />
 
-                        {props.profile.contacts.mainLink ? <p><b>mainLink - </b> {props.profile.contacts.mainLink}</p> : null}
-                        {props.profile.contacts.website ? <p><b>website - </b> {props.profile.contacts.website}</p> : null}
-                        {props.profile.lookingForAJob ? <p className={s.work}><MdWork/>{props.profile.lookingForAJobDescription}</p> : null}
+                        {contacts.mainLink ? <p><b>mainLink - </b> {contacts.mainLink}</p> : null}
+                        {contacts.website ? <p><b>website - </b> {contacts.website}</p> : null}
+                        {lookingForAJob ? <p className={s.work}><MdWork/>{lookingForAJobDescription}</p> : null}
                     </div>
                 </div>
 
-                {/*<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>*/}
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
 
         </div>

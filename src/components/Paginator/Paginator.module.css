@@ -1,0 +1,8 @@
+.paginator {
+    font-size: 28px;
+}
+
+.current {
+    color: var(--accent-color);
+    font-weight: bold;
+}

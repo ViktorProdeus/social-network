@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Login.module.css';
 import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import { requiredField } from "../../utils/validators/validator";
-import { Input } from "../common/FormsControls/FormsControls";
+import { createField, Input } from "../common/FormsControls/FormsControls";
 import { connect } from "react-redux";
 import { login } from "../../redux/auth-reducer";
 import { StateType } from "../../redux/redux-store";
@@ -14,33 +14,21 @@ type FormDataType = {
     email: string
 }
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <Field
-                text={'Email'}
-                name={'email'}
-                component={Input}
-                validate={[requiredField]}
-            />
-
-            <Field
-                type={'password'}
-                text={'Password'}
-                name={'password'}
-                component={Input}
-                validate={[requiredField]}
-            />
+        <form onSubmit={handleSubmit}>
+            {createField("text", "Email", "email", [requiredField], Input)}
+            {createField("password", "password", "password", [requiredField], Input)}
 
             <div className={`${s.formGroup} ${s.formGroup_checkbox}`}>
-                <label>
+                <label className={s.checkbox}>
                     <Field name={'rememberMe'} component={'input'} type='checkbox' />
                     <span className={s.checkboxText}>remember me</span>
                 </label>
             </div>
 
             <div className={s.formSummaryError}>
-                {props.error}
+                {error}
             </div>
 
             <div className={s.formGroup}>
@@ -52,12 +40,12 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 const LoginReduxForm = reduxForm<FormDataType>({form: 'Login'})(LoginForm);
 
-const Login = (props: mapDispatchToPropsType & mapStateToPropsType) => {
+const Login: React.FC<mapDispatchToPropsType & mapStateToPropsType> = ({isAuth, login} ) => {
     const onSubmit = (formData: FormDataType) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe);
     }
 
-    if(props.isAuth) {
+    if(isAuth) {
         return <Redirect to={'/profile'}/>
     }
     return (

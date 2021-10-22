@@ -76,6 +76,11 @@
 
 .formGroup_checkbox input {
     height: auto;
+    cursor: pointer;
+}
+
+.formGroup_checkbox label {
+    cursor: pointer;
 }
 
 .formGroup .errorInput {

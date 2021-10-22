@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './FormsControls.module.css';
-import { WrappedFieldProps } from "redux-form";
+import { Field, WrappedFieldProps } from "redux-form";
+import { RequiredFieldType } from "../../../utils/validators/validator";
 
 export const FormControl: React.FC<WrappedFieldProps> = ({input, meta, ...props}) => {
     const hasError = meta.touched && meta.error;
@@ -27,19 +28,31 @@ type OwnPropsType = {
     text: string
 }
 
-export const Input = (props: WrappedFieldProps & OwnPropsType) => {
-    const {input, meta, ...restProps} = props;
-    const hasError = meta.touched && meta.error;
+export const Input: React.FC<WrappedFieldProps & OwnPropsType> = (props) => {
+    const {input, meta: {touched, error}, text, ...restProps} = props;
+    const hasError = touched && error;
 
     return (
         <FormControl {...props}>
             <label>
-                <span>{props.text}</span>
+                <span>{text}</span>
                 <br />
                 <input {...input} {...restProps} />
                 <br />
-                <span>{hasError && meta.error}</span>
+                <span>{hasError && error}</span>
             </label>
         </FormControl>
     )
 }
+
+export const createField = (type: 'text' | 'password', text: string, name: string, validators: RequiredFieldType[], component: FC<WrappedFieldProps & OwnPropsType>) => (
+    <>
+        <Field
+            type={type}
+            text={text}
+            name={name}
+            component={component}
+            validate={validators}
+        />
+    </>
+)

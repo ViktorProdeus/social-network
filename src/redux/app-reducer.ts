@@ -31,13 +31,11 @@ type InitializesSuccessType = ReturnType<typeof initializesSuccess>
 
 type InitializeAppThunkType = ThunkDispatch<StateType, unknown, ActionsType>
 
-export const initializeApp = () => (dispatch: InitializeAppThunkType) => {
+export const initializeApp = () => async (dispatch: InitializeAppThunkType) => {
     const promise = dispatch(getAuthUserData());
 
-    Promise.all([promise])
-        .then(() => {
-            dispatch(initializesSuccess());
-        });
+    await Promise.all([promise])
+    dispatch(initializesSuccess());
 };
 
 

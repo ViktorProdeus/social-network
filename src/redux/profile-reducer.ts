@@ -1,6 +1,6 @@
-import {v1} from "uuid";
-import {profileAPI} from "../api/api";
-import {Dispatch} from "redux";
+import { v1 } from "uuid";
+import { profileAPI } from "../api/api";
+import { Dispatch } from "redux";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
@@ -121,18 +121,20 @@ export const setUserProfile = (profile: ProfileType): SetUsersType => ({type: SE
 export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, status});
 export const deletePost = (postId: string) => ({type: DELETE_POST, postId} as const)
 
-export const getUserProfile = (userID: string) => (dispatch: Dispatch<ActionsProfileType>) => {
-    profileAPI.get(userID).then(data => dispatch(setUserProfile(data)))
+export const getUserProfile = (userID: string) => async (dispatch: Dispatch<ActionsProfileType>) => {
+    const data = await profileAPI.get(userID);
+    dispatch(setUserProfile(data));
 }
-export const getStatus = (userID: string) => (dispatch: Dispatch<ActionsProfileType>) => {
-    profileAPI.getStatus(userID).then(data => dispatch(setStatus(data)));
+export const getStatus = (userID: string) => async (dispatch: Dispatch<ActionsProfileType>) => {
+    const data = await profileAPI.getStatus(userID);
+    dispatch(setStatus(data));
 }
-export const updateStatus = (status: string) => (dispatch: Dispatch<ActionsProfileType>) => {
-    profileAPI.updateStatus(status).then(data => {
-        if(data.resultCode === 0) {
-            dispatch(setStatus(status));
-        }
-    });
+export const updateStatus = (status: string) => async (dispatch: Dispatch<ActionsProfileType>) => {
+    const data = await profileAPI.updateStatus(status);
+
+    if (data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
 }
 
 export default profileReducer;
