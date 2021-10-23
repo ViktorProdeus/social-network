@@ -10,9 +10,9 @@ const ProfileStatus = (props: PropsType) => {
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
 
-    useEffect(()=>{
+    useEffect(() => {
         setStatus(props.status)
-    },[props.status]);
+    }, [props.status]);
 
     const activateEditMode = () => {
         setEditMode(true);
@@ -31,9 +31,9 @@ const ProfileStatus = (props: PropsType) => {
     return (
         <div className={s.status}>
             {!editMode &&
-            <div onDoubleClick={activateEditMode}>
+            <p onDoubleClick={activateEditMode}>
                 <b>status: </b><span>{props.status || ' -empty-'}</span>
-            </div>
+            </p>
             }
 
             {editMode &&

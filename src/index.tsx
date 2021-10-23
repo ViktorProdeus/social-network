@@ -1,21 +1,10 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import { HashRouter } from "react-router-dom";
-import { Provider } from "react-redux";
+import SamuraiJSApp from './App';
 
-ReactDOM.render(
-    <HashRouter>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </HashRouter>,
-    document.getElementById('root')
-);
-
+ReactDOM.render(<SamuraiJSApp />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

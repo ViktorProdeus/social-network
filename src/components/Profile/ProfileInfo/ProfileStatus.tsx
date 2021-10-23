@@ -45,9 +45,9 @@ class ProfileStatus extends Component<PropsType> {
         return (
             <div className={s.status}>
                 {!this.state.editMode &&
-                <div onDoubleClick={this.activateEditMode}>
+                <p onDoubleClick={this.activateEditMode}>
                     <b>status: </b><span>{this.props.status || ' -empty-'}</span>
-                </div>
+                </p>
                 }
 
                 {this.state.editMode &&

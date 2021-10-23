@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Redirect, Route, withRouter } from "react-router-dom";
+import { HashRouter, Redirect, Route, withRouter } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Setting/Settings";
@@ -10,10 +10,10 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
-import { StateType } from "./redux/redux-store";
+import store, { StateType } from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
 
 
@@ -59,6 +59,16 @@ type mapDispatchToPropsType = {
     initializeApp: () => void
 }
 
-export default compose<React.ComponentType>(
+const AppContainer = compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App);
+
+const SamuraiJSApp = () => {
+    return <HashRouter>
+        <Provider store={store}>
+            <AppContainer />
+        </Provider>
+    </HashRouter>
+}
+
+export default SamuraiJSApp;

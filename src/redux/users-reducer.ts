@@ -83,7 +83,6 @@ let initialState = {
     currentPage: 1,
     isFetching: true,
     followingInProgress: [] as string[],
-    fake: 10
 }
 
 export type UsersPageType = typeof initialState
