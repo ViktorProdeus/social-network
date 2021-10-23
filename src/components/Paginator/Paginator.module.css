@@ -1,8 +1,12 @@
 .paginator {
-    font-size: 28px;
+    margin: 10px;
+}
+.pageNumber {
+    padding: 2px;
+    border: 1px solid grey;
 }
 
-.current {
-    color: var(--accent-color);
+.pageNumber.selectedPage {
     font-weight: bold;
+    border-color: black;
 }

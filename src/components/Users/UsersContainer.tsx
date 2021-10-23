@@ -27,21 +27,23 @@ type UsersContainerPropsType = MapStateToPropsType & MapDispatchToProps
 
 class UsersContainer extends React.Component<UsersContainerPropsType> {
     componentDidMount() {
-        const {getUsers, currentPage, pageSize} = this.props
-        getUsers(currentPage, pageSize);
+        const {currentPage, pageSize} = this.props;
+        this.props.getUsers(currentPage, pageSize);
     }
 
     onPageChanged(pageNumber: number) {
-        const {setCurrentPage, getUsers, pageSize} = this.props
-        setCurrentPage(pageNumber)
-        getUsers(pageNumber, pageSize);
+        const {pageSize} = this.props;
+        setCurrentPage(pageNumber);
+        this.props.getUsers(pageNumber, pageSize);
     }
 
     render() {
 
         return <>
             {
-                this.props.isFetching ? <Preloader /> :
+                this.props.isFetching && <Preloader />
+            }
+
                     <Users
                         users={this.props.users}
                         follow={this.props.follow}
@@ -52,7 +54,6 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                         onPageChanged={this.onPageChanged.bind(this)}
                         followingInProgress={this.props.followingInProgress}
                     />
-            }
         </>
     }
 }

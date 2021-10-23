@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Users.module.css'
 import { UserType } from "../../redux/users-reducer";
-// import Paginator from "../Paginator/Paginator";
+import Paginator from "../Paginator/Paginator";
 import User from "./User";
-import Pagination from 'rc-pagination';
-import localeInfo from "../../locale/en_US";
+// import Pagination from 'rc-pagination';
+// import localeInfo from "../../locale/en_US";
 
 type PropsType = {
     follow: (userID: string) => void
@@ -23,36 +23,36 @@ const Users = (props: PropsType) => {
         unfollow,
         users,
         followingInProgress,
-        // pageSize,
-        // totalUsersCount,
-        // currentPage,
-        // onPageChanged,
+        pageSize,
+        totalUsersCount,
+        currentPage,
+        onPageChanged,
     } = props;
 
     return (
         <div className={s.users}>
             <div className="pagination">
 
-                {/*<Paginator*/}
-                {/*    pageSize={pageSize}*/}
-                {/*    totalUsersCount={totalUsersCount}*/}
-                {/*    currentPage={currentPage}*/}
-                {/*    onPageChanged={onPageChanged}*/}
-                {/*/>*/}
+                <Paginator
+                    pageSize={pageSize}
+                    totalItemsCount={totalUsersCount}
+                    currentPage={currentPage}
+                    onPageChanged={onPageChanged}
+                />
 
                 {/*plugin rc-pagination*/}
-                <Pagination
-                    showTitle={true}
-                    current={props.currentPage}
-                    className="ant-pagination"
-                    onChange={(e) => {
-                        props.onPageChanged(e)
-                    }}
-                    defaultCurrent={props.currentPage}
-                    defaultPageSize={props.pageSize}
-                    total={props.totalUsersCount}
-                    locale={localeInfo}
-                />
+                {/*<Pagination*/}
+                {/*    showTitle={true}*/}
+                {/*    current={props.currentPage}*/}
+                {/*    className="ant-pagination"*/}
+                {/*    onChange={(e) => {*/}
+                {/*        props.onPageChanged(e)*/}
+                {/*    }}*/}
+                {/*    defaultCurrent={props.currentPage}*/}
+                {/*    defaultPageSize={props.pageSize}*/}
+                {/*    total={props.totalUsersCount}*/}
+                {/*    locale={localeInfo}*/}
+                {/*/>*/}
 
             </div>
             {
