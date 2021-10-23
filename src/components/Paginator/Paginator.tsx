@@ -12,13 +12,13 @@ type PropsType = {
 
 const Paginator = (props: PropsType) => {
     const {totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10} = props
-    const pageCount = Math.ceil(totalItemsCount / pageSize);
+    const pagesCount = Math.ceil(totalItemsCount / pageSize);
     let pages = [];
-    for (let i = 1; i <= pageCount; i++) {
+    for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
 
-    const portionCount = Math.ceil(totalItemsCount / portionSize);
+    const portionCount = Math.ceil(pagesCount / portionSize);
     const [portionNumber, setPortionNumber] = useState(1);
     const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     const rightPortionPageNumber = portionNumber * portionSize;
