@@ -9,6 +9,92 @@
     margin-bottom: 20px;
 }
 
+input[type="file"] {
+    margin-bottom: 20px;
+    max-width: 300px;
+    width: 100%;
+;
+}
+
+input[type=file]::-ms-browse {
+    margin-right: 10px;
+    padding: 20px;
+    min-height: 42px;
+    display: inline-block;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: url("../../../assets/images/camera-solid.svg");
+    background-size: 70% 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    font-size: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--default-transition);
+}
+
+input[type=file]::-webkit-file-upload-button {
+    margin-right: 10px;
+    padding: 20px;
+    min-height: 42px;
+    display: inline-block;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: url("../../../assets/images/camera-solid.svg");
+    background-size: 70% 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    font-size: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--default-transition);
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 10px;
+    padding: 20px;
+    min-height: 42px;
+    display: inline-block;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: url("../../../assets/images/camera-solid.svg");
+    background-size: 70% 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    font-size: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--default-transition);
+}
+
+input[type=file]::-ms-browse:hover {
+    background-color: var(--accent-color);
+    background-image: url("../../../assets/images/camera-solid-hover.svg");
+    border: 3px solid var(--accent-color);
+}
+
+input[type=file]::-webkit-file-upload-button:hover {
+    background-color: var(--accent-color);
+    background-image: url("../../../assets/images/camera-solid-hover.svg");
+    border: 3px solid var(--accent-color);
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: var(--accent-color);
+    background-image: url("../../../assets/images/camera-solid-hover.svg");
+    border: 3px solid var(--accent-color);
+}
+
+
 .status {
     padding: 20px;
     font-size: 18px;

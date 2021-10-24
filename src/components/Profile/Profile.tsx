@@ -13,11 +13,13 @@ const Profile = (props: ProfileStateType) => {
         <div className={s.profile}>
 
             <ProfileInfo
+                isOwner={props.isOwner}
                 isAuth={props.isAuth}
                 profile={props.profile}
                 status={props.status}
                 updateStatus={props.updateStatus}
                 authorizedUserId={props.authorizedUserId}
+                savePhoto={props.savePhoto}
             />
             <MyPostsContainer/>
         </div>

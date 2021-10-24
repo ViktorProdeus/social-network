@@ -10,7 +10,9 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 type PropsType = MapPropsType & {
+    savePhoto: (file: string) => void
     updateStatus: (status: string) => void
+    isOwner: boolean
 };
 
 const ProfileInfo = (props: PropsType) => {
@@ -18,10 +20,17 @@ const ProfileInfo = (props: PropsType) => {
         profile,
         status,
         updateStatus,
+        isOwner,
     } = props;
 
     if (!profile) {
         return <Preloader/>
+    }
+
+    const onMainPhotoSelected = (e: any) => {
+       if(e.target.files.length) {
+           props.savePhoto(e.target.files[0]);
+       }
     }
 
     const {contacts, photos, fullName, aboutMe, lookingForAJob, lookingForAJobDescription} = profile
@@ -63,7 +72,7 @@ const ProfileInfo = (props: PropsType) => {
                         {lookingForAJob ? <p className={s.work}><MdWork/>{lookingForAJobDescription}</p> : null}
                     </div>
                 </div>
-
+                {isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
                 <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
 
