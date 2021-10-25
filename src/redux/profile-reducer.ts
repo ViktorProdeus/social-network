@@ -1,6 +1,9 @@
 import { v1 } from "uuid";
 import { profileAPI } from "../api/api";
 import { Dispatch } from "redux";
+import { stopSubmit } from "redux-form";
+import { FormAction } from "redux-form/lib/actions";
+import { BaseThunkType, InferActionsTypes } from "./redux-store";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
@@ -68,7 +71,7 @@ export type ProfileType = {
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
-    userId: number
+    userId: string
     photos: PhotosType
 }
 
@@ -137,7 +140,7 @@ export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, 
 export const deletePost = (postId: string) => ({type: DELETE_POST, postId} as const)
 export const savePhotoSuccess = (photos: PhotosType) => ({type: SAVE_PHOTO_SUCCESS, photos} as const)
 
-export const getUserProfile = (userID: string) => async (dispatch: Dispatch<ActionsProfileType>) => {
+export const getUserProfile = (userID: string | null) => async (dispatch: Dispatch<ActionsProfileType>) => {
     const data = await profileAPI.get(userID);
     dispatch(setUserProfile(data));
 }
@@ -158,6 +161,22 @@ export const savePhoto = (file: string) => async (dispatch: Dispatch<ActionsProf
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos));
     }
+
 }
+
+export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch, getState) => {
+    const response = await profileAPI.saveProfile(profile);
+
+    const userId = getState().auth.id;
+
+    if (response.data.resultCode === 0) {
+        await dispatch(getUserProfile(userId));
+    } else {
+        dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0] }));
+        return Promise.reject(response.data.messages[0]);
+    }
+}
+type ActionsType = InferActionsTypes<ActionsProfileType>
+type ThunkType = BaseThunkType<ActionsType | FormAction>
 
 export default profileReducer;

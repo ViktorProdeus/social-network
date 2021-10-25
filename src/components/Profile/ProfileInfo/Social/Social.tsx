@@ -1,10 +1,10 @@
 import React from 'react';
-import {AiOutlineFacebook} from "@react-icons/all-files/ai/AiOutlineFacebook";
-import {FaVk} from "@react-icons/all-files/fa/FaVk";
-import {FaTwitter} from "@react-icons/all-files/fa/FaTwitter";
-import {FaInstagram} from "@react-icons/all-files/fa/FaInstagram";
-import {FaYoutubeSquare} from "@react-icons/all-files/fa/FaYoutubeSquare";
-import {FaGithub} from "@react-icons/all-files/fa/FaGithub";
+import { AiOutlineFacebook } from "@react-icons/all-files/ai/AiOutlineFacebook";
+import { FaVk } from "@react-icons/all-files/fa/FaVk";
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
+import { FaYoutubeSquare } from "@react-icons/all-files/fa/FaYoutubeSquare";
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import s from './Social.module.css'
 
 type PropsType = {
@@ -17,15 +17,22 @@ type PropsType = {
 }
 
 const Social = (props: PropsType) => {
+    const socialList = [
+        {item: props.facebook, icon: <AiOutlineFacebook />},
+        {item: props.vk, icon: <FaVk />},
+        {item: props.twitter, icon: <FaTwitter />},
+        {item: props.instagram, icon: <FaInstagram />},
+        {item: props.youtube, icon: <FaYoutubeSquare />},
+        {item: props.github, icon: <FaGithub />},
+    ];
 
     return (
         <ul className={s.social}>
-            {props.facebook ? <li><AiOutlineFacebook/>{props.facebook}</li> : null}
-            {props.vk ? <li><FaVk/>{props.vk}</li> : null}
-            {props.twitter ? <li><FaTwitter/>{props.twitter}</li> : null}
-            {props.instagram ? <li><FaInstagram/>{props.instagram}</li> : null}
-            {props.youtube ? <li><FaYoutubeSquare/>{props.youtube}</li> : null}
-            {props.github ? <li><FaGithub/>{props.github}</li> : null}
+            {socialList.map((item, index) => {
+                return (
+                    item.item ? <a key={index} className={s.link} target="_blank" rel="noreferrer" href={item.item}><li>{item.icon}</li></a> : null
+                )
+            })}
         </ul>
     )
 }

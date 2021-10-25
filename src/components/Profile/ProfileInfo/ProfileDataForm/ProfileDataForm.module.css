@@ -1,0 +1,67 @@
+.form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 20px;
+}
+
+.saveBtn {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    min-height: 75px;
+}
+
+.contacts {
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.contactsHeading {
+    margin-bottom: 20px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-size: 25px;
+    color: var(--accent-color);
+}
+
+.aboutMe {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.lookingForAJob {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    margin-bottom: 30px;
+}
+
+.saveBtn button {
+    width: 120px;
+    min-height: 30px;
+    border: 3px solid var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color);
+    text-transform: uppercase;
+
+    font-weight: 800;
+    cursor: pointer;
+    transition: all var(--default-transition);
+}
+
+.saveBtn button:hover {
+    border: 3px solid var(--accent-color);
+    background-color: var(--accent-color);
+    color: var(--main-bg);
+}
+
+.formSummaryError {
+    min-height: 36px;
+    color: var(--warning-color);
+    padding: 5px;
+}

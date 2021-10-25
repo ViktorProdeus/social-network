@@ -20,6 +20,7 @@ const Profile = (props: ProfileStateType) => {
                 updateStatus={props.updateStatus}
                 authorizedUserId={props.authorizedUserId}
                 savePhoto={props.savePhoto}
+                saveProfile={props.saveProfile}
             />
             <MyPostsContainer/>
         </div>
