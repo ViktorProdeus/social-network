@@ -18,6 +18,13 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.contacts div:nth-child(3) {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
 .contactsHeading {
     margin-bottom: 20px;
     grid-column-start: 1;
